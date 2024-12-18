@@ -1,0 +1,406 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Barlow", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    width: 1240px;
+    max-width: 100%;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 0;
+}
+
+header .iconDiv {
+    display: flex;
+    align-items: center;
+    gap: 7.71px;
+}
+
+.iconDiv img {
+    width: 18.29px;
+    height: 18.33px;
+
+}
+
+nav {
+    display: flex;
+    gap: 48px;
+}
+
+.actionsDiv {
+    display: flex;
+    gap: 8px;
+}
+
+.actionsDiv button {
+    width: 82px;
+    height: 40px;
+    padding: 10px 18px 10px 18px;
+    border-radius: 6px;
+}
+
+.iconDiv h2 {
+    font-family: Barlow;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21.6px;
+    letter-spacing: 0.02em;
+}
+
+nav a {
+    font-family: Barlow;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.2px;
+    letter-spacing: 0.02em;
+}
+
+.reg {
+    width: 94px;
+    height: 40px;
+    padding: 10px 18px 10px 18px;
+    border-radius: 6px;
+    border: 1px solid #1576D6;
+    background-color: transparent;
+    color: #1576D6;
+    font-weight: 500;
+}
+
+.sign {
+    width: 94px;
+    height: 40px;
+    padding: 10px 18px 10px 18px;
+    border-radius: 6px;
+    border: 1px solid #1576D6;
+    background-color: #1576D6;
+    color: white;
+    font-weight: 500;
+}
+.burgerBar{
+    display: none;
+}
+/* ----------------media screen for header ------------------ */
+@media screen and (max-width:767px) {
+    .container{
+        width: 100%;
+    }
+    .navLinks, .actionsDiv {
+        display: none;
+    }
+    
+    .burgerBar{
+        display: block;
+    }
+    header{
+        position: sticky;
+        top: 5px;
+        left: 20px;
+        /* z-index: 11111; */
+        width: 90%;
+    }
+        header{
+        position: sticky;
+        top: 5px;
+        left: 20px;
+        z-index: 11111;
+        width: 90%;
+    }
+    .iconDiv h2 {
+        font-family: Barlow;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 21.6px;
+        letter-spacing: 0.02em;
+    }
+}
+/* ---------------end style for header------------------- */
+
+.mainPageContainer{
+    position: relative;
+    background-color: #FFFFFC;
+}
+
+/* ---------------------------------- */
+.mainPage{
+    width: 1240px;
+    height: 500px;
+    background-image: url(./img/Rectangle\ 2.png);
+    max-width: 100%;
+    margin-bottom: 40px;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+.description{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+}
+
+.mainHead{
+    /* typography */
+    font-family: Barlow;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 38.4px;
+    /* layout */
+    width: 610px;
+    height: 38px;
+}
+.mainInfo{
+    /* typography */
+    font-family: 'Barlow';
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 28px;
+    letter-spacing: 0.02em;
+    /* layout */
+    width: 650px;
+    height: 56px;
+    max-width: 100%;
+}
+/* ----------------media screen for main Page ------------------ */
+@media screen and (max-width:767px) {
+    .mainPage{
+        height: 100vh;
+        border-radius: 0px;
+        background-size: cover;
+        background-position: 15% bottom;
+        padding: 30px 15px;
+        align-items: flex-end;
+        text-align: left;
+    }
+    .description {
+        text-align: left;
+        width: 358px;
+        height: 112px;
+    }
+    .mainHead{
+        font-size: 22px;
+        font-weight: 700;
+        line-height: 26.4px;
+        width: 311px;
+        height: 26px;
+    }
+    .mainInfo{
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 22.4px;
+        letter-spacing: 0.02em;
+        width: 358px;
+        height: 66px;
+    }
+}
+/* -----------------end style for main Page------------------------- */
+.booking-section{
+    width: 85%;
+    height: 64px;
+    border-radius: 8px;
+    position: absolute;
+    left: 7%;
+    bottom: -30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFFFFC;
+    box-shadow: 0px 4px 37px rgba(0, 0, 0, 0.15);
+}
+.booking-container{
+    width:100%;
+    display: flex;
+    gap: 10px;
+    text-align: center;
+    align-items: center;
+    padding: 10px;
+}
+.data-entry{
+    display: flex;
+    gap: 10px;
+    padding:12px;
+    border-radius: 4px;
+    background-color: #F2F2F2;
+}
+.data-entry input{
+    border-style: none;
+    background-color: #F2F2F2;
+    width: 100%;
+}
+.location{
+    width: 26%;
+}
+.checkout{
+    width: 17%;
+}
+.Guests{
+    width: 25%;
+}
+.mysearch{
+    width: 15%;
+    background-color: #1576D6;
+}
+.mysearch button{
+    border-style: none;
+    color: white;
+    background-color: #1576D6;
+    width: 100%;
+}
+/* ----------------media screen for booking-section------------------ */
+@media screen and (max-width:767px) {
+    .booking-section{
+        position:static;
+        width: 100%;
+        height: 162px;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .location{
+        width: 48%;
+    }
+    .checkout{
+        width: 48%;
+    }
+    .Guests{
+        width: 48%;
+    }
+    .mysearch{
+        width: 100%;
+    }
+    
+    .booking-container{
+        width:100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        text-align: center;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0;
+        margin: 0px 15px;
+    }
+}
+/* -------------------------------------------- */
+.covid-section{
+    width: 100%;
+    padding: 35px 0;
+}
+.covid-container{
+    background-color:#F4C123 ;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 19px;
+    height: 72px;
+    align-items: center;
+    padding: 20px 24px;
+}
+.covidtext{
+    font-family: Barlow;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    margin: 0;
+}
+/* ----------------media screen for covid-section------------------ */
+@media screen and (max-width:767px) {
+    .covid-container{
+        margin: 0 15px ;
+        padding: 6px 10px;
+        gap: 10px;
+    }
+}
+/* -------------------------------------------- */
+
+.four-types-section{
+    width: 100%;
+    margin: 20px 0;
+}
+.typesHeading{
+    font-family: Barlow;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 45px;
+}
+.types{
+    width: 25%;
+    padding: 14px;
+}
+
+.typesContainer{
+    display: flex;
+    justify-content: space-between;
+}
+.hDescription{
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 21.6px;
+    padding-top: 27px;
+}
+.pDescription{
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 18px;
+    margin: 14px 25px 0 0;
+}
+.typesLogo {
+    margin-left: 40px;
+}
+/* ----------------media screen for types-section------------------ */
+@media screen and (max-width:767px) {
+    .four-types-section{
+        width: 100%;
+        margin: 20px 0;
+        text-align: center;
+        
+    }
+    .types{
+        width: 241.18px;
+    }
+    .typesContainer{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .typesLogo, .pDescription {
+        margin: 10px 0;
+    }
+    .typesContainer{
+        height: 91px;
+        align-items: center; 
+        justify-content: center; 
+        padding: 10px 20px;
+    }
+    .type-description{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 10px;
+        max-width: 100%;
+        margin-bottom: 26px;
+    }
+}
