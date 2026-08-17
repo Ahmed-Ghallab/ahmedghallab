@@ -17,6 +17,9 @@ import {
   FaWordpress,
   FaShieldAlt,
   FaLayerGroup,
+  FaCode,
+  FaTools,
+  FaServer,
 } from "react-icons/fa";
 import { MdDevices } from "react-icons/md";
 import {
@@ -36,97 +39,153 @@ import {
 } from "react-icons/si";
 import { TbApi } from "react-icons/tb";
 
-const skillsData = [
-  // Frontend Core & Frameworks
-  { name: "React.js", category: "frontend", level: "Advanced", icon: <FaReact /> },
-  { name: "Next.js", category: "frontend", level: "Advanced", icon: <SiNextdotjs /> },
-  { name: "TypeScript", category: "frontend", level: "Advanced", icon: <SiTypescript /> },
-  { name: "JavaScript (ES6+)", category: "frontend", level: "Advanced", icon: <FaJs /> },
-  { name: "HTML5", category: "frontend", level: "Advanced", icon: <FaHtml5 /> },
-  { name: "CSS3", category: "frontend", level: "Advanced", icon: <FaCss3Alt /> },
-  { name: "Vite", category: "frontend", level: "Advanced", icon: <SiVite /> },
-
-  // State & Data
-  { name: "Zustand", category: "state", level: "Advanced", icon: <FaLayerGroup /> },
-  { name: "Context API", category: "state", level: "Advanced", icon: <FaReact /> },
-  { name: "React Query", category: "state", level: "Intermediate", icon: <SiReactquery /> },
-  { name: "RESTful APIs", category: "state", level: "Advanced", icon: <TbApi /> },
-  { name: "Axios", category: "state", level: "Advanced", icon: <SiAxios /> },
-
-  // UI & Styling
-  { name: "Tailwind CSS", category: "ui", level: "Advanced", icon: <SiTailwindcss /> },
-  { name: "Bootstrap", category: "ui", level: "Advanced", icon: <FaBootstrap /> },
-  { name: "Material UI", category: "ui", level: "Intermediate", icon: <SiMui /> },
-  { name: "Framer Motion", category: "ui", level: "Intermediate", icon: <SiFramer /> },
-  { name: "Responsive UI", category: "ui", level: "Advanced", icon: <MdDevices /> },
-
-  // Backend Integration & Cloud
-  { name: "Supabase", category: "backend", level: "Intermediate", icon: <SiSupabase /> },
-  { name: "Firebase", category: "backend", level: "Intermediate", icon: <SiFirebase /> },
-  { name: "Strapi CMS", category: "backend", level: "Intermediate", icon: <SiStrapi /> },
-  { name: "Auth & Security", category: "backend", level: "Intermediate", icon: <FaShieldAlt /> },
-
-  // Tools & Workflow
-  { name: "Git", category: "tools", level: "Advanced", icon: <FaGitAlt /> },
-  { name: "GitHub", category: "tools", level: "Advanced", icon: <FaGithub /> },
-  { name: "Jira", category: "tools", level: "Advanced", icon: <SiJira /> },
-  { name: "Figma", category: "tools", level: "Intermediate", icon: <FaFigma /> },
-  { name: "Adobe XD", category: "tools", level: "Intermediate", icon: <SiAdobexd /> },
-  { name: "WordPress", category: "tools", level: "Intermediate", icon: <FaWordpress /> },
-
-  // Soft Skills
-  { name: "Problem Solving", category: "soft", level: "Advanced", icon: <FaBrain /> },
-  { name: "Agile Communication", category: "soft", level: "Advanced", icon: <FaComments /> },
-  { name: "Teamwork & Mentorship", category: "soft", level: "Advanced", icon: <FaUsers /> },
-  { name: "Sprint Management", category: "soft", level: "Advanced", icon: <FaClock /> },
+const skillCategories = [
+  {
+    id: "frontend",
+    title: "Frontend Core & Architecture",
+    icon: <FaCode />,
+    accent: "emerald",
+    skills: [
+      { name: "React.js", level: "Advanced", icon: <FaReact /> },
+      { name: "Next.js", level: "Advanced", icon: <SiNextdotjs /> },
+      { name: "TypeScript", level: "Advanced", icon: <SiTypescript /> },
+      { name: "JavaScript (ES6+)", level: "Advanced", icon: <FaJs /> },
+      { name: "HTML5", level: "Advanced", icon: <FaHtml5 /> },
+      { name: "CSS3", level: "Advanced", icon: <FaCss3Alt /> },
+      { name: "Vite", level: "Advanced", icon: <SiVite /> },
+    ],
+  },
+  {
+    id: "state",
+    title: "State & Data Layer",
+    icon: <FaLayerGroup />,
+    accent: "cyan",
+    skills: [
+      { name: "Zustand", level: "Advanced", icon: <FaLayerGroup /> },
+      { name: "Context API", level: "Advanced", icon: <FaReact /> },
+      { name: "React Query", level: "Intermediate", icon: <SiReactquery /> },
+      { name: "RESTful APIs", level: "Advanced", icon: <TbApi /> },
+      { name: "Axios", level: "Advanced", icon: <SiAxios /> },
+    ],
+  },
+  {
+    id: "ui",
+    title: "UI Systems & Styling",
+    icon: <MdDevices />,
+    accent: "violet",
+    skills: [
+      { name: "Tailwind CSS", level: "Advanced", icon: <SiTailwindcss /> },
+      { name: "Bootstrap", level: "Advanced", icon: <FaBootstrap /> },
+      { name: "Material UI", level: "Intermediate", icon: <SiMui /> },
+      { name: "Framer Motion", level: "Intermediate", icon: <SiFramer /> },
+      { name: "Responsive UI", level: "Advanced", icon: <MdDevices /> },
+    ],
+  },
+  {
+    id: "backend",
+    title: "Backend & Cloud Integration",
+    icon: <FaServer />,
+    accent: "rose",
+    skills: [
+      { name: "Supabase", level: "Intermediate", icon: <SiSupabase /> },
+      { name: "Firebase", level: "Intermediate", icon: <SiFirebase /> },
+      { name: "Strapi CMS", level: "Intermediate", icon: <SiStrapi /> },
+      { name: "Auth & Security", level: "Intermediate", icon: <FaShieldAlt /> },
+    ],
+  },
+  {
+    id: "tools",
+    title: "Tooling & Agile Workflow",
+    icon: <FaTools />,
+    accent: "amber",
+    skills: [
+      { name: "Git & GitHub", level: "Advanced", icon: <FaGithub /> },
+      { name: "Jira (Agile/Scrum)", level: "Advanced", icon: <SiJira /> },
+      { name: "Figma", level: "Intermediate", icon: <FaFigma /> },
+      { name: "Adobe XD", level: "Intermediate", icon: <SiAdobexd /> },
+      { name: "WordPress", level: "Intermediate", icon: <FaWordpress /> },
+    ],
+  },
+  {
+    id: "soft",
+    title: "Engineering Strengths",
+    icon: <FaBrain />,
+    accent: "blue",
+    skills: [
+      { name: "Problem Solving", level: "Advanced", icon: <FaBrain /> },
+      { name: "Agile Communication", level: "Advanced", icon: <FaComments /> },
+      { name: "Teamwork & Mentorship", level: "Advanced", icon: <FaUsers /> },
+      { name: "Sprint Delivery", level: "Advanced", icon: <FaClock /> },
+    ],
+  },
 ];
 
 const categoryFilters = [
-  { id: "all", label: "All Skills" },
+  { id: "all", label: "All Tech Stacks (29)" },
   { id: "frontend", label: "Frontend Core" },
   { id: "state", label: "State & Data" },
   { id: "ui", label: "UI & Styling" },
-  { id: "backend", label: "Backend Integration" },
+  { id: "backend", label: "Cloud & Backend" },
   { id: "tools", label: "Tools & Agile" },
   { id: "soft", label: "Soft Skills" },
 ];
 
 function MySkills() {
-  const [filter, setFilter] = useState("all");
+  const [activeCategory, setActiveCategory] = useState("all");
 
-  const filteredSkills =
-    filter === "all"
-      ? skillsData
-      : skillsData.filter((s) => s.category === filter);
+  const displayedCategories =
+    activeCategory === "all"
+      ? skillCategories
+      : skillCategories.filter((cat) => cat.id === activeCategory);
 
   return (
-    <section id="skills">
+    <section id="skills" className="skills-section">
       <h2 className="section-title">Technical Expertise</h2>
       <p className="skills-subtitle">
-        Curated modern technologies and tools I leverage daily to engineer robust, high-performance web solutions.
+        Curated modern technologies, architectural patterns, and engineering workflows I utilize to deliver high-performance web applications.
       </p>
 
+      {/* Filter Tabs */}
       <div className="skill-filters">
         {categoryFilters.map((f) => (
           <button
             key={f.id}
-            className={`filter-btn ${filter === f.id ? "active" : ""}`}
-            onClick={() => setFilter(f.id)}
+            className={`filter-btn ${activeCategory === f.id ? "active" : ""}`}
+            onClick={() => setActiveCategory(f.id)}
           >
             {f.label}
           </button>
         ))}
       </div>
 
-      <div className="skills-grid">
-        {filteredSkills.map((skill) => (
-          <div className="skill-card" key={skill.name}>
-            <div className="skill-icon">{skill.icon}</div>
-            <span className="skill-name">{skill.name}</span>
+      {/* Structured Category Domain Cards Grid */}
+      <div className="skills-domain-grid">
+        {displayedCategories.map((category) => (
+          <div
+            key={category.id}
+            className={`domain-card ${category.accent}`}
+          >
+            <div className="domain-header">
+              <div className="domain-icon-box">{category.icon}</div>
+              <h3 className="domain-title">{category.title}</h3>
+              <span className="domain-count">{category.skills.length} Skills</span>
+            </div>
 
-            <span className={`skill-badge ${skill.level.toLowerCase()}`}>
-              {skill.level}
-            </span>
+            <div className="domain-skills-wrap">
+              {category.skills.map((skill) => (
+                <div key={skill.name} className="skill-chip">
+                  <span className="chip-icon">{skill.icon}</span>
+                  <span className="chip-name">{skill.name}</span>
+                  <span
+                    className={`chip-badge ${
+                      skill.level.toLowerCase() === "advanced" ? "adv" : "med"
+                    }`}
+                  >
+                    {skill.level === "Advanced" ? "Adv" : "Mid"}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         ))}
       </div>

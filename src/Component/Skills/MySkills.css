@@ -1,12 +1,11 @@
-#skills {
+.skills-section {
     margin-bottom: 6rem;
-    text-align: center;
     position: relative;
 }
 
 .skills-subtitle {
     text-align: center;
-    max-width: 650px;
+    max-width: 700px;
     margin: -2.5rem auto 3rem;
     font-size: 1.05rem;
     color: var(--text-muted);
@@ -16,7 +15,7 @@
 .skill-filters {
     display: flex;
     justify-content: center;
-    gap: 0.8rem;
+    gap: 0.6rem;
     margin-bottom: 3rem;
     flex-wrap: wrap;
 }
@@ -26,9 +25,9 @@
     border: 1px solid var(--glass-border);
     color: var(--text-muted);
     font-family: var(--font-heading);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 500;
-    padding: 0.5rem 1.1rem;
+    padding: 0.45rem 1.1rem;
     border-radius: 50px;
     cursor: none;
     transition: all 0.25s ease;
@@ -42,97 +41,168 @@
 
 .filter-btn.active {
     color: var(--primary);
-    background: rgba(0, 242, 96, 0.1);
+    background: rgba(0, 242, 96, 0.12);
     border-color: var(--primary);
-    box-shadow: 0 0 15px rgba(0, 242, 96, 0.2);
+    box-shadow: 0 0 15px rgba(0, 242, 96, 0.25);
 }
 
-/* --- Grid Layout --- */
-/* --- Grid Layout --- */
-.skills-grid {
-    display: flex; /* Changed from grid to flex for better centering if number of items is low, or grid with center justification */
+/* --- Domain Cards Grid (3 Columns on Desktop, 2 on Laptop, 1 on Mobile) --- */
+.skills-domain-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 2rem;
-    justify-content: center;
-    max-width: 1000px;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
-/* --- Skill Card (Glass Tech) --- */
-.skill-card {
-    background: var(--bg-card);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    padding: 2rem 1rem;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+/* --- Domain Card --- */
+.domain-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(16px);
+    border-radius: 16px;
+    padding: 1.5rem 1.4rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    gap: 1.2rem;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     overflow: hidden;
 }
 
-.skill-card:hover {
-    background: rgba(100, 255, 218, 0.05);
-    transform: translateY(-5px);
-    border-color: var(--primary-dim);
-    box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
+.domain-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
 }
 
-/* Icon Styling */
-.skill-icon {
-    font-size: 2/5rem;
-    font-size: 2.5rem;
+.domain-card.emerald:hover { border-color: rgba(0, 242, 96, 0.4); }
+.domain-card.cyan:hover { border-color: rgba(0, 229, 255, 0.4); }
+.domain-card.violet:hover { border-color: rgba(189, 52, 254, 0.4); }
+.domain-card.rose:hover { border-color: rgba(213, 51, 105, 0.4); }
+.domain-card.amber:hover { border-color: rgba(245, 158, 11, 0.4); }
+.domain-card.blue:hover { border-color: rgba(59, 130, 246, 0.4); }
+
+/* --- Domain Header --- */
+.domain-header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 0.9rem;
+}
+
+.domain-icon-box {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--primary);
+    flex-shrink: 0;
+}
+
+.domain-card.emerald .domain-icon-box { color: var(--primary); }
+.domain-card.cyan .domain-icon-box { color: var(--accent-cyan); }
+.domain-card.violet .domain-icon-box { color: var(--accent-purple); }
+.domain-card.rose .domain-icon-box { color: var(--secondary); }
+.domain-card.amber .domain-icon-box { color: var(--accent-gold); }
+.domain-card.blue .domain-icon-box { color: #60a5fa; }
+
+.domain-title {
+    font-size: 1.05rem;
+    color: var(--text-highlight);
+    margin: 0;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    flex-grow: 1;
+    text-align: left;
+}
+
+.domain-count {
+    font-size: 0.75rem;
+    font-family: var(--font-code);
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.04);
+    padding: 0.2rem 0.6rem;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* --- Domain Skills Wrap (Compact Chips) --- */
+.domain-skills-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    align-items: center;
+}
+
+.skill-chip {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 0.4rem 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+    cursor: none;
+}
+
+.skill-chip:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.chip-icon {
+    font-size: 1.05rem;
     color: var(--text-main);
-    margin-bottom: 1rem;
-    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s ease;
 }
 
-.skill-card:hover .skill-icon {
+.skill-chip:hover .chip-icon {
     color: var(--primary);
 }
 
-/* Text */
-.skill-name {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--text-main);
-    margin-bottom: 0.8rem;
+.chip-name {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-highlight);
 }
 
-/* Level Badge (Neon Pill) */
-.skill-badge {
-    font-size: 0.75rem;
-    padding: 0.2rem 0.8rem;
-    border-radius: 50px;
+.chip-badge {
+    font-size: 0.68rem;
     font-family: var(--font-code);
+    padding: 0.1rem 0.45rem;
+    border-radius: 4px;
     border: 1px solid transparent;
 }
 
-.skill-badge.advanced {
+.chip-badge.adv {
+    background: rgba(0, 242, 96, 0.1);
     color: var(--primary);
-    border-color: var(--primary-dim);
-    background: rgba(100, 255, 218, 0.1);
+    border-color: rgba(0, 242, 96, 0.25);
 }
 
-.skill-badge.intermediate {
-    color: var(--secondary);
-    border-color: var(--secondary-dim);
-    background: rgba(189, 52, 254, 0.1);
+.chip-badge.med {
+    background: rgba(0, 229, 255, 0.1);
+    color: var(--accent-cyan);
+    border-color: rgba(0, 229, 255, 0.25);
 }
 
-.skill-badge.beginner {
-    color: var(--accent-pink);
-    border-color: rgba(214, 51, 132, 0.3);
-    background: rgba(214, 51, 132, 0.1);
-}
-
-/* Responsive */
+/* --- Mobile Responsiveness --- */
 @media (max-width: 768px) {
-    .skills-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
+    .skills-domain-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+    .domain-card {
+        padding: 1.2rem 1rem;
     }
 }
