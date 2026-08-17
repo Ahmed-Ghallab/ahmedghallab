@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import "../../Component/Navbar/MyNavbar.css";
 import {
   FaUser,
@@ -9,8 +9,10 @@ import {
   FaEnvelope,
   FaGithub,
   FaLinkedin,
+  FaWhatsapp,
+  FaTimes,
 } from "react-icons/fa";
-import { IoMail } from "react-icons/io5";
+import { IoMail, IoSparkles } from "react-icons/io5";
 import LogoFull from "../../assets/images/logo/logo-optimized.webp";
 
 function MyNavbar() {
@@ -18,14 +20,30 @@ function MyNavbar() {
   const [scrolled, setScrolled] = useState(false);
   const [showOffcanvas, setShowOffcanvas] = useState(false);
 
+  // Lock body scroll when offcanvas is open
   useEffect(() => {
     if (showOffcanvas) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
     }
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [showOffcanvas]);
 
+  // Handle ESC key to close drawer
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape" && showOffcanvas) {
+        setShowOffcanvas(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [showOffcanvas]);
+
+  // Scroll spy & navbar background blur
   useEffect(() => {
     let ticking = false;
 
@@ -38,7 +56,7 @@ function MyNavbar() {
           let current = "";
 
           sections.forEach((section) => {
-            const sectionTop = section.offsetTop - 120;
+            const sectionTop = section.offsetTop - 140;
             if (
               window.scrollY >= sectionTop &&
               window.scrollY < sectionTop + section.offsetHeight
@@ -58,18 +76,32 @@ function MyNavbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (id) => {
+  const scrollToSection = useCallback((id) => {
     const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    if (el) {
+      const navOffset = 70;
+      const elementPosition = el.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - navOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  }, []);
+
+  const handleNavClick = (id) => {
+    scrollToSection(id);
+    setShowOffcanvas(false);
   };
 
   const sections = [
-    { id: "about", label: "About", icon: <FaUser /> },
-    { id: "experience", label: "Experience", icon: <FaBriefcase /> },
-    { id: "skills", label: "Skills", icon: <FaCode /> },
-    { id: "projects", label: "Projects", icon: <FaProjectDiagram /> },
-    { id: "resume", label: "Resume", icon: <FaFileAlt /> },
-    { id: "contact", label: "Contact", icon: <FaEnvelope /> },
+    { id: "about", num: "01", label: "About", icon: <FaUser /> },
+    { id: "experience", num: "02", label: "Experience", icon: <FaBriefcase /> },
+    { id: "skills", num: "03", label: "Skills", icon: <FaCode /> },
+    { id: "projects", num: "04", label: "Projects", icon: <FaProjectDiagram /> },
+    { id: "resume", num: "05", label: "Resume", icon: <FaFileAlt /> },
+    { id: "contact", num: "06", label: "Contact", icon: <FaEnvelope /> },
   ];
 
   const socialLinks = [
@@ -84,6 +116,11 @@ function MyNavbar() {
       label: "LinkedIn",
     },
     {
+      icon: <FaWhatsapp />,
+      url: "https://wa.me/201279547848",
+      label: "WhatsApp",
+    },
+    {
       icon: <IoMail />,
       url: "mailto:eng.ahmedghallab@gmail.com",
       label: "Email",
@@ -95,7 +132,10 @@ function MyNavbar() {
       {/* Desktop Navigation */}
       <nav className={`my-nav desktop-nav ${scrolled ? "scrolled" : ""}`}>
         <div className="nav-container">
-          <div className="nav-logo-wrapper" onClick={() => window.scrollTo(0,0)}>
+          <div
+            className="nav-logo-wrapper"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          >
             <img src={LogoFull} alt="Ahmed Ghallab" className="nav-logo" />
           </div>
 
@@ -111,71 +151,111 @@ function MyNavbar() {
               </button>
             ))}
           </div>
+
+          <button
+            className="nav-hire-btn"
+            onClick={() => scrollToSection("contact")}
+          >
+            <IoSparkles className="hire-btn-icon" /> Let's Talk
+          </button>
         </div>
       </nav>
 
-      {/* Mobile Navigation */}
+      {/* Mobile Navigation Bar */}
       <nav className={`my-nav mobile-nav ${scrolled ? "scrolled" : ""}`}>
-        <div className="nav-logo-wrapper-mobile">
-           <img src={LogoFull} alt="Ahmed Ghallab" className="nav-logo-mobile" />
-        </div>
-        <button
-          className="hamburger-btn"
-          onClick={() => setShowOffcanvas(true)}
+        <div
+          className="nav-logo-wrapper-mobile"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >
-          <div className="dots-icon">
-            {Array.from({ length: 9 }).map((_, i) => (
-              <span key={i} className="dot"></span>
-            ))}
-          </div>
+          <img src={LogoFull} alt="Ahmed Ghallab" className="nav-logo-mobile" />
+        </div>
+
+        <button
+          className={`hamburger-btn ${showOffcanvas ? "open" : ""}`}
+          onClick={() => setShowOffcanvas(!showOffcanvas)}
+          aria-label={showOffcanvas ? "Close menu" : "Open menu"}
+          aria-expanded={showOffcanvas}
+        >
+          <span className="hamburger-line line-1"></span>
+          <span className="hamburger-line line-2"></span>
+          <span className="hamburger-line line-3"></span>
         </button>
       </nav>
 
-      {/* Offcanvas Menu */}
+      {/* Modern Offcanvas Mobile Drawer */}
       <div className={`offcanvas-menu ${showOffcanvas ? "active" : ""}`}>
+        {/* Backdrop Overlay */}
         <div
           className="offcanvas-overlay"
           onClick={() => setShowOffcanvas(false)}
         ></div>
-        <div className="offcanvas-content">
-          <button className="close-btn" onClick={() => setShowOffcanvas(false)}>
-            &times;
-          </button>
 
+        {/* Drawer Content */}
+        <div className="offcanvas-content">
+          {/* Drawer Header */}
+          <div className="offcanvas-header">
+            <div className="offcanvas-profile">
+              <div className="offcanvas-brand-name">Ahmed Ghallab</div>
+              <div className="offcanvas-status">
+                <span className="status-ping"></span>
+                <span>Available for hire</span>
+              </div>
+            </div>
+            <button
+              className="close-drawer-btn"
+              onClick={() => setShowOffcanvas(false)}
+              aria-label="Close menu"
+            >
+              <FaTimes />
+            </button>
+          </div>
+
+          {/* Navigation Links with Numbering & Icons */}
           <div className="offcanvas-links">
-            {sections.map(({ id, label, icon }) => (
+            {sections.map(({ id, num, label, icon }) => (
               <button
                 key={id}
                 className={`offcanvas-link ${
                   activeSection === id ? "active" : ""
                 }`}
-                onClick={() => {
-                  scrollToSection(id);
-                  setShowOffcanvas(false);
-                }}
+                onClick={() => handleNavClick(id)}
               >
-                <span className="icon">{icon}</span>
-                {label}
+                <span className="offcanvas-num">{num}</span>
+                <span className="offcanvas-link-icon">{icon}</span>
+                <span className="offcanvas-label">{label}</span>
+                <span className="offcanvas-arrow">→</span>
               </button>
             ))}
           </div>
 
+          {/* Quick Action Button */}
+          <div className="offcanvas-cta-wrap">
+            <button
+              className="offcanvas-talk-btn"
+              onClick={() => handleNavClick("contact")}
+            >
+              <IoSparkles /> Let's Work Together
+            </button>
+          </div>
+
           {/* Social Links in Mobile Menu */}
-          <div className="offcanvas-social">
-            <h4>Connect with me</h4>
-            <div className="social-links-mobile">
+          <div className="offcanvas-footer">
+            <div className="offcanvas-social-row">
               {socialLinks.map((social, index) => (
                 <a
                   key={index}
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="social-link-mobile"
+                  className="offcanvas-social-icon"
+                  aria-label={social.label}
                 >
                   {social.icon}
-                  <span>{social.label}</span>
                 </a>
               ))}
+            </div>
+            <div className="offcanvas-location">
+              Alexandria, Egypt 🇪🇬 • UTC+3
             </div>
           </div>
         </div>
