@@ -5,9 +5,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 100px 1rem 0; /* Added top padding for fixed navbar */
+    padding: 100px 1.25rem 3rem;
     overflow: hidden;
-    /* Background handled by global + FloatingIcons */
+    width: 100%;
 }
 
 /* Overlay for readability */
@@ -26,37 +26,40 @@
     position: relative;
     z-index: 10;
     max-width: 1000px;
-    text-align: center; /* Centered for maximum impact */
+    width: 100%;
+    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 0;
 }
 
 /* --- Typography & Elements --- */
 .hero-greeting {
     font-family: var(--font-code);
     color: var(--primary);
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    margin-bottom: 0.8rem;
     letter-spacing: 2px;
     animation: fadeInDown 0.8s ease-out;
 }
 
 .hero-name {
-    font-size: clamp(3.5rem, 9vw, 6rem);
+    font-size: clamp(2.4rem, 8vw, 5.5rem);
     font-weight: 900;
     color: var(--text-highlight);
     line-height: 1.1;
-    margin-bottom: 1rem;
-    letter-spacing: -2px;
+    margin-bottom: 0.8rem;
+    letter-spacing: -1.5px;
     animation: fadeInUp 0.8s ease-out 0.2s backwards;
+    word-break: break-word;
 }
 
 .hero-role {
-    font-size: clamp(2rem, 5vw, 4rem);
+    font-size: clamp(1.4rem, 4vw, 3.2rem);
     color: var(--text-muted);
     font-weight: 700;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     line-height: 1.2;
     animation: fadeInUp 0.8s ease-out 0.4s backwards;
 }
@@ -66,11 +69,11 @@
 }
 
 .hero-desc {
-    max-width: 600px;
-    font-size: 1.25rem;
+    max-width: 650px;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
     color: var(--text-muted);
-    line-height: 1.8;
-    margin-bottom: 3.5rem;
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
     animation: fadeInUp 0.8s ease-out 0.6s backwards;
 }
 
@@ -89,7 +92,7 @@
     color: var(--secondary);
     animation: blink 1s step-end infinite;
     font-weight: 300;
-    margin-left: 5px;
+    margin-left: 4px;
 }
 
 @keyframes blink {
@@ -98,12 +101,12 @@
 }
 
 @keyframes fadeInDown {
-    from { opacity: 0; transform: translateY(-30px); }
+    from { opacity: 0; transform: translateY(-20px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
+    from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
@@ -114,13 +117,15 @@
     gap: 0.6rem;
     background: rgba(0, 242, 96, 0.08);
     border: 1px solid rgba(0, 242, 96, 0.25);
-    padding: 0.4rem 1.2rem;
+    padding: 0.4rem 1.1rem;
     border-radius: 50px;
-    font-size: 0.85rem;
+    font-size: clamp(0.75rem, 2vw, 0.85rem);
     font-weight: 500;
     color: var(--primary);
     margin-bottom: 1.5rem;
     backdrop-filter: blur(8px);
+    max-width: 100%;
+    text-align: center;
     animation: fadeInDown 0.6s ease-out;
 }
 
@@ -131,15 +136,15 @@
     border-radius: 50%;
     box-shadow: 0 0 10px var(--primary);
     animation: pulse-glow 2s infinite ease-in-out;
+    flex-shrink: 0;
 }
 
 /* --- Hero Stats Row --- */
 .hero-stats-row {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.2rem;
     margin-bottom: 2.5rem;
-    flex-wrap: wrap;
     width: 100%;
     max-width: 850px;
     animation: fadeInUp 0.8s ease-out 0.7s backwards;
@@ -149,7 +154,7 @@
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
     backdrop-filter: blur(12px);
-    padding: 0.8rem 1.4rem;
+    padding: 0.9rem 1.2rem;
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -167,35 +172,45 @@
 .hero-stat-icon {
     font-size: 1.4rem;
     color: var(--primary);
+    flex-shrink: 0;
 }
 
 .hero-stat-card strong {
     display: block;
     color: var(--text-highlight);
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-family: var(--font-heading);
 }
 
 .hero-stat-card span {
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     color: var(--text-muted);
 }
 
 /* --- Hero CTAs --- */
 .hero-cta-group {
     display: flex;
-    gap: 1.2rem;
+    gap: 1rem;
     flex-wrap: wrap;
     justify-content: center;
+    width: 100%;
+    max-width: 650px;
     animation: fadeInUp 0.8s ease-out 0.9s backwards;
 }
 
+.hero-cta {
+    padding: 0.85rem 1.8rem;
+    font-size: 0.95rem;
+}
+
 .btn-secondary-glow {
-    display: inline-block;
-    padding: 0.9rem 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 1.8rem;
     font-family: var(--font-heading);
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: var(--text-highlight);
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.15);
@@ -212,11 +227,13 @@
 }
 
 .btn-outline-glow {
-    display: inline-block;
-    padding: 0.9rem 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 1.8rem;
     font-family: var(--font-heading);
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: var(--text-muted);
     background: transparent;
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -231,20 +248,16 @@
     box-shadow: 0 10px 25px -5px var(--secondary-dim);
 }
 
-/* --- Mobile Queries --- */
+/* --- Mobile Specific Queries --- */
 @media (max-width: 768px) {
     .hero-section {
-        padding-top: 6rem;
-    }
-    .hero-name {
-        margin-bottom: 0.5rem;
+        padding-top: 5rem;
+        padding-bottom: 2rem;
+        min-height: auto;
     }
     .hero-stats-row {
-        gap: 0.8rem;
-    }
-    .hero-stat-card {
-        width: 100%;
-        justify-content: flex-start;
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
     }
     .hero-cta-group {
         flex-direction: column;
@@ -254,4 +267,14 @@
         width: 100%;
         text-align: center;
     }
-}
+}
+
+@media (max-width: 420px) {
+    .hero-greeting {
+        letter-spacing: 1px;
+    }
+    .hero-badge-pill {
+        padding: 0.35rem 0.8rem;
+        line-height: 1.4;
+    }
+}

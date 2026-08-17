@@ -1,6 +1,7 @@
 .contact-section {
-    padding: 3rem 1rem 6rem;
+    padding: 3rem 0 6rem;
     position: relative;
+    width: 100%;
 }
 
 .contact-subtitle {
@@ -14,10 +15,11 @@
 /* --- Direct Contact Cards --- */
 .contact-cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 1.2rem;
     max-width: 900px;
     margin: 0 auto 3rem;
+    width: 100%;
 }
 
 .contact-quick-card {
@@ -25,11 +27,12 @@
     border: 1px solid var(--glass-border);
     backdrop-filter: blur(12px);
     border-radius: 12px;
-    padding: 1.2rem 1.4rem;
+    padding: 1.1rem 1.2rem;
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.9rem;
     transition: all 0.3s ease;
+    width: 100%;
 }
 
 .contact-quick-card:hover {
@@ -39,12 +42,12 @@
 }
 
 .contact-card-icon {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     color: var(--primary);
     background: rgba(0, 242, 96, 0.08);
     border: 1px solid rgba(0, 242, 96, 0.2);
-    width: 45px;
-    height: 45px;
+    width: 44px;
+    height: 44px;
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -52,16 +55,20 @@
     flex-shrink: 0;
 }
 
+.contact-card-details {
+    overflow: hidden;
+}
+
 .contact-card-details h4 {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     color: var(--text-muted);
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.15rem;
     font-family: var(--font-heading);
 }
 
 .contact-card-details a,
 .contact-card-details p {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     color: var(--text-highlight);
     font-weight: 500;
     margin: 0;
@@ -80,15 +87,16 @@
     border: 1px solid var(--glass-border);
     backdrop-filter: blur(16px);
     border-radius: 20px;
-    padding: 3rem;
+    padding: 2.5rem;
     max-width: 750px;
     box-shadow: 0 15px 45px -10px rgba(0, 0, 0, 0.6);
+    width: 100%;
 }
 
 .form-title {
     color: var(--text-highlight);
-    font-size: 1.6rem;
-    margin-bottom: 2rem;
+    font-size: clamp(1.3rem, 3vw, 1.6rem);
+    margin-bottom: 1.8rem;
     font-family: var(--font-heading);
     text-align: center;
 }
@@ -96,24 +104,27 @@
 .contact-form {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.2rem;
+    width: 100%;
 }
 
 .form-row-2col {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1.2rem;
+    width: 100%;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
     text-align: left;
+    width: 100%;
 }
 
 .form-group label {
     color: var(--text-main);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.45rem;
     font-size: 0.85rem;
     font-family: var(--font-heading);
     font-weight: 500;
@@ -121,14 +132,15 @@
 
 .form-group input,
 .form-group textarea {
-    padding: 0.9rem 1.1rem;
+    padding: 0.85rem 1rem;
     border-radius: 8px;
     background: rgba(2, 6, 23, 0.7);
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: var(--text-highlight);
-    font-size: 0.95rem;
+    font-size: 16px; /* Prevents auto-zoom on iOS */
     font-family: var(--font-body);
     transition: all 0.2s ease;
+    width: 100%;
 }
 
 .form-group input:focus,
@@ -150,8 +162,8 @@ textarea {
     border: none;
     font-family: var(--font-heading);
     font-weight: 700;
-    font-size: 1rem;
-    padding: 1rem 2rem;
+    font-size: 0.95rem;
+    padding: 0.9rem 2rem;
     border-radius: 50px;
     cursor: none;
     transition: all 0.3s ease;
@@ -160,6 +172,7 @@ textarea {
     align-items: center;
     justify-content: center;
     box-shadow: 0 5px 20px rgba(0, 242, 96, 0.3);
+    width: 100%;
 }
 
 .submit-btn:hover {
@@ -188,14 +201,17 @@ textarea {
 
 .form-success-msg p {
     color: var(--text-muted);
-    font-size: 0.95rem;
+    font-size: 0.92rem;
 }
 
 @media (max-width: 768px) {
+    .contact-cards-grid {
+        grid-template-columns: 1fr;
+    }
     .form-row-2col {
         grid-template-columns: 1fr;
     }
     .contact-wrapper {
-        padding: 2rem 1.2rem;
+        padding: 1.8rem 1.2rem;
     }
 }

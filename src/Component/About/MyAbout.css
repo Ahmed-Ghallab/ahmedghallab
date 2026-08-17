@@ -5,6 +5,7 @@
     align-items: center;
     position: relative;
     padding: 2rem 0;
+    width: 100%;
 }
 
 /* --- Image Styling --- */
@@ -12,16 +13,19 @@
     position: relative;
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 
 .image-frame {
     position: relative;
-    padding: 5px;
+    padding: 4px;
     background: linear-gradient(45deg, var(--primary), var(--secondary));
-    border-radius: 12px;
-    box-shadow: 0 0 20px rgba(100, 255, 218, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 0 25px rgba(0, 242, 96, 0.15);
     z-index: 2;
     transition: transform 0.3s ease;
+    max-width: 360px;
+    width: 100%;
 }
 
 .image-frame:hover {
@@ -30,13 +34,13 @@
 
 .about-image img {
     width: 100%;
-    max-width: 380px;
     height: auto;
-    border-radius: 8px; /* Slightly tighter radius */
+    border-radius: 12px;
     display: block;
-    background: var(--bg-card); /* Fallback */
-    filter: grayscale(20%) contrast(1.1); /* Professional grading */
+    background: var(--bg-card);
+    filter: grayscale(15%) contrast(1.05);
     transition: all 0.3s ease;
+    object-fit: cover;
 }
 
 .about-image img:hover {
@@ -52,7 +56,7 @@
     width: 80%;
     height: 80%;
     background: var(--secondary);
-    opacity: 0.2;
+    opacity: 0.18;
     filter: blur(60px);
     z-index: 1;
 }
@@ -61,13 +65,15 @@
 #about-text {
     position: relative;
     z-index: 5;
+    width: 100%;
 }
 
 #about-text p {
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
+    font-size: clamp(0.95rem, 2vw, 1.05rem);
+    margin-bottom: 1.2rem;
     border-left: 2px solid var(--primary-dim);
     padding-left: 1rem;
+    line-height: 1.7;
 }
 
 .highlight {
@@ -78,7 +84,7 @@
 /* --- Quick Info Grid --- */
 .about-quick-info {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 1rem;
     margin: 1.5rem 0;
 }
@@ -90,7 +96,7 @@
     background: var(--bg-card);
     border: 1px solid rgba(255, 255, 255, 0.05);
     padding: 0.8rem 1rem;
-    border-radius: 8px;
+    border-radius: 10px;
     transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
@@ -109,56 +115,69 @@
     display: block;
     color: var(--text-highlight);
     font-size: 0.85rem;
+    font-family: var(--font-heading);
 }
 
 .info-item span {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: var(--text-muted);
 }
 
 /* --- Badges --- */
 .about-badges {
     display: flex;
-    gap: 0.8rem;
+    gap: 0.6rem;
     margin-top: 1.5rem;
     flex-wrap: wrap;
 }
 
 .about-badges span {
-    background: rgba(100, 255, 218, 0.05); /* Very subtle tint */
+    background: rgba(0, 242, 96, 0.06);
     border: 1px solid var(--primary-dim);
     color: var(--primary);
     border-radius: 6px;
-    padding: 0.5rem 0.9rem;
-    font-size: 0.85rem;
+    padding: 0.45rem 0.85rem;
+    font-size: 0.82rem;
     font-family: var(--font-code);
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    transition: all 0.3s ease;
-    cursor: none;
+    transition: all 0.25s ease;
 }
 
 .about-badges span:hover {
     background: var(--primary-dim);
     box-shadow: 0 0 10px var(--primary-dim);
-    color: var(--bg-dark); /* Contrast text on hover */
+    color: var(--bg-dark);
     font-weight: 600;
 }
 
-/* --- Responsive --- */
-@media (max-width: 768px) {
+/* --- Responsive Layout --- */
+@media (max-width: 900px) {
     .about-wrapper {
         grid-template-columns: 1fr;
-        gap: 3rem;
+        gap: 2.5rem;
         text-align: left;
     }
     
-    .about-image img {
-        max-width: 300px;
+    .about-image {
+        margin: 0 auto;
     }
 
-    .about-badges {
-        justify-content: flex-start;
+    .image-frame {
+        max-width: 280px;
+    }
+
+    .about-quick-info {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .image-frame {
+        max-width: 220px;
+    }
+    #about-text p {
+        padding-left: 0.75rem;
     }
 }
