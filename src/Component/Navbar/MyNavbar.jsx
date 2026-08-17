@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../../Component/Navbar/MyNavbar.css";
 import {
   FaUser,
+  FaBriefcase,
   FaCode,
   FaProjectDiagram,
   FaFileAlt,
@@ -52,11 +53,12 @@ function MyNavbar() {
   };
 
   const sections = [
-    { id: "about", icon: <FaUser /> },
-    { id: "skills", icon: <FaCode /> },
-    { id: "projects", icon: <FaProjectDiagram /> },
-    { id: "resume", icon: <FaFileAlt /> },
-    { id: "contact", icon: <FaEnvelope /> },
+    { id: "about", label: "About", icon: <FaUser /> },
+    { id: "experience", label: "Experience", icon: <FaBriefcase /> },
+    { id: "skills", label: "Skills", icon: <FaCode /> },
+    { id: "projects", label: "Projects", icon: <FaProjectDiagram /> },
+    { id: "resume", label: "Resume", icon: <FaFileAlt /> },
+    { id: "contact", label: "Contact", icon: <FaEnvelope /> },
   ];
 
   const socialLinks = [
@@ -87,14 +89,14 @@ function MyNavbar() {
           </div>
 
           <div className="nav-links">
-            {sections.map(({ id, icon }) => (
+            {sections.map(({ id, label, icon }) => (
               <button
                 key={id}
                 className={`nav-link ${activeSection === id ? "active" : ""}`}
                 onClick={() => scrollToSection(id)}
               >
                 <span className="icon">{icon}</span>
-                {id.charAt(0).toUpperCase() + id.slice(1)}
+                {label}
               </button>
             ))}
           </div>
@@ -130,7 +132,7 @@ function MyNavbar() {
           </button>
 
           <div className="offcanvas-links">
-            {sections.map(({ id, icon }) => (
+            {sections.map(({ id, label, icon }) => (
               <button
                 key={id}
                 className={`offcanvas-link ${
@@ -142,7 +144,7 @@ function MyNavbar() {
                 }}
               >
                 <span className="icon">{icon}</span>
-                {id.charAt(0).toUpperCase() + id.slice(1)}
+                {label}
               </button>
             ))}
           </div>

@@ -1,36 +1,3 @@
-// import "../../Component/Skills/MySkills.css";
-
-// const skillsData = [
-//   { name: "HTML5", icon: "fab fa-html5" },
-//   { name: "CSS3", icon: "fab fa-css3-alt" },
-//   { name: "SASS", icon: "fab fa-sass" },
-//   { name: "Bootstrap", icon: "fab fa-bootstrap" },
-//   { name: "Responsive Design", icon: "fas fa-laptop-code" },
-//   { name: "JavaScript", icon: "fab fa-js-square" },
-//   { name: "React", icon: "fab fa-react" },
-//   { name: "Git", icon: "fab fa-git-alt" },
-//   { name: "Figma", icon: "fab fa-figma" },
-//   { name: "GitHub", icon: "fab fa-github" },
-// ];
-
-// function MySkills() {
-//   return (
-//     <>
-//       <section id="skills">
-//         <h2 className="section-title">Skills</h2>
-//         {skillsData.map((skill) => (
-//           <div className="skill-item" key={skill.name}>
-//             <i className={skill.icon}></i>
-//             <span>{skill.name}</span>
-//           </div>
-//         ))}
-//       </section>
-//     </>
-//   );
-// }
-
-// export default MySkills;
-
 import { useState } from "react";
 import "./MySkills.css";
 
@@ -48,6 +15,8 @@ import {
   FaBrain,
   FaClock,
   FaWordpress,
+  FaShieldAlt,
+  FaLayerGroup,
 } from "react-icons/fa";
 import { MdDevices } from "react-icons/md";
 import {
@@ -61,38 +30,66 @@ import {
   SiFirebase,
   SiAdobexd,
   SiFramer,
+  SiSupabase,
+  SiVite,
+  SiJira,
 } from "react-icons/si";
+import { TbApi } from "react-icons/tb";
 
 const skillsData = [
-  { name: "HTML5", category: "frontend", level: "Advanced", icon: <FaHtml5 /> },
-  { name: "CSS3", category: "frontend", level: "Advanced", icon: <FaCss3Alt /> },
-  { name: "JavaScript (ES6+)", category: "frontend", level: "Advanced", icon: <FaJs /> },
-  { name: "TypeScript", category: "frontend", level: "Intermediate", icon: <SiTypescript /> },
+  // Frontend Core & Frameworks
   { name: "React.js", category: "frontend", level: "Advanced", icon: <FaReact /> },
   { name: "Next.js", category: "frontend", level: "Advanced", icon: <SiNextdotjs /> },
-  { name: "Bootstrap", category: "frontend", level: "Advanced", icon: <FaBootstrap /> },
-  { name: "Tailwind CSS", category: "frontend", level: "Advanced", icon: <SiTailwindcss /> },
-  { name: "Material UI", category: "frontend", level: "Intermediate", icon: <SiMui /> },
-  { name: "Zustand", category: "frontend", level: "Intermediate", icon: <FaReact /> }, // Using React icon as placeholder or generic
-  { name: "React Query", category: "frontend", level: "Intermediate", icon: <SiReactquery /> },
-  { name: "Axios", category: "frontend", level: "Advanced", icon: <SiAxios /> },
-  { name: "Framer Motion", category: "frontend", level: "Intermediate", icon: <SiFramer /> },
-  
+  { name: "TypeScript", category: "frontend", level: "Advanced", icon: <SiTypescript /> },
+  { name: "JavaScript (ES6+)", category: "frontend", level: "Advanced", icon: <FaJs /> },
+  { name: "HTML5", category: "frontend", level: "Advanced", icon: <FaHtml5 /> },
+  { name: "CSS3", category: "frontend", level: "Advanced", icon: <FaCss3Alt /> },
+  { name: "Vite", category: "frontend", level: "Advanced", icon: <SiVite /> },
+
+  // State & Data
+  { name: "Zustand", category: "state", level: "Advanced", icon: <FaLayerGroup /> },
+  { name: "Context API", category: "state", level: "Advanced", icon: <FaReact /> },
+  { name: "React Query", category: "state", level: "Intermediate", icon: <SiReactquery /> },
+  { name: "RESTful APIs", category: "state", level: "Advanced", icon: <TbApi /> },
+  { name: "Axios", category: "state", level: "Advanced", icon: <SiAxios /> },
+
+  // UI & Styling
+  { name: "Tailwind CSS", category: "ui", level: "Advanced", icon: <SiTailwindcss /> },
+  { name: "Bootstrap", category: "ui", level: "Advanced", icon: <FaBootstrap /> },
+  { name: "Material UI", category: "ui", level: "Intermediate", icon: <SiMui /> },
+  { name: "Framer Motion", category: "ui", level: "Intermediate", icon: <SiFramer /> },
+  { name: "Responsive UI", category: "ui", level: "Advanced", icon: <MdDevices /> },
+
+  // Backend Integration & Cloud
+  { name: "Supabase", category: "backend", level: "Intermediate", icon: <SiSupabase /> },
+  { name: "Firebase", category: "backend", level: "Intermediate", icon: <SiFirebase /> },
+  { name: "Strapi CMS", category: "backend", level: "Intermediate", icon: <SiStrapi /> },
+  { name: "Auth & Security", category: "backend", level: "Intermediate", icon: <FaShieldAlt /> },
+
+  // Tools & Workflow
   { name: "Git", category: "tools", level: "Advanced", icon: <FaGitAlt /> },
   { name: "GitHub", category: "tools", level: "Advanced", icon: <FaGithub /> },
-  { name: "Firebase", category: "tools", level: "Intermediate", icon: <SiFirebase /> },
-  { name: "Strapi", category: "tools", level: "Intermediate", icon: <SiStrapi /> },
+  { name: "Jira", category: "tools", level: "Advanced", icon: <SiJira /> },
   { name: "Figma", category: "tools", level: "Intermediate", icon: <FaFigma /> },
   { name: "Adobe XD", category: "tools", level: "Intermediate", icon: <SiAdobexd /> },
   { name: "WordPress", category: "tools", level: "Intermediate", icon: <FaWordpress /> },
 
+  // Soft Skills
   { name: "Problem Solving", category: "soft", level: "Advanced", icon: <FaBrain /> },
-  { name: "Communication", category: "soft", level: "Advanced", icon: <FaComments /> },
-  { name: "Teamwork", category: "soft", level: "Advanced", icon: <FaUsers /> },
-  { name: "Time Management", category: "soft", level: "Advanced", icon: <FaClock /> },
+  { name: "Agile Communication", category: "soft", level: "Advanced", icon: <FaComments /> },
+  { name: "Teamwork & Mentorship", category: "soft", level: "Advanced", icon: <FaUsers /> },
+  { name: "Sprint Management", category: "soft", level: "Advanced", icon: <FaClock /> },
 ];
 
-const filters = ["all", "frontend", "tools", "soft"];
+const categoryFilters = [
+  { id: "all", label: "All Skills" },
+  { id: "frontend", label: "Frontend Core" },
+  { id: "state", label: "State & Data" },
+  { id: "ui", label: "UI & Styling" },
+  { id: "backend", label: "Backend Integration" },
+  { id: "tools", label: "Tools & Agile" },
+  { id: "soft", label: "Soft Skills" },
+];
 
 function MySkills() {
   const [filter, setFilter] = useState("all");
@@ -104,16 +101,19 @@ function MySkills() {
 
   return (
     <section id="skills">
-      <h2 className="section-title">Skills</h2>
+      <h2 className="section-title">Technical Expertise</h2>
+      <p className="skills-subtitle">
+        Curated modern technologies and tools I leverage daily to engineer robust, high-performance web solutions.
+      </p>
 
       <div className="skill-filters">
-        {filters.map((f) => (
+        {categoryFilters.map((f) => (
           <button
-            key={f}
-            className={`filter-btn ${filter === f ? "active" : ""}`}
-            onClick={() => setFilter(f)}
+            key={f.id}
+            className={`filter-btn ${filter === f.id ? "active" : ""}`}
+            onClick={() => setFilter(f.id)}
           >
-            {f.toUpperCase()}
+            {f.label}
           </button>
         ))}
       </div>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import MyAbout from "./Component/About/MyAbout";
+import MyExperience from "./Component/Experience/MyExperience";
 import MyHeader from "./Component/Header/MyHeader";
 import MyNavbar from "./Component/Navbar/MyNavbar";
 import MySkills from "./Component/Skills/MySkills";
@@ -27,6 +28,7 @@ function App() {
       <MyNavbar />
       <main>
         <MyAbout />
+        <MyExperience />
         <MySkills />
         <MyProjrct />
         <MyResume />

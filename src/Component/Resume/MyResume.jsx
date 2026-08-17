@@ -1,30 +1,93 @@
+import React from "react";
 import "../../Component/Resume/MyResume.css";
 import ResumeFile from "../../assets/pdf/AhmedGhallabResume.pdf";
+import {
+  FaDownload,
+  FaEye,
+  FaFileAlt,
+  FaCheckCircle,
+  FaGraduationCap,
+  FaBriefcase,
+  FaCode,
+  FaLanguage,
+} from "react-icons/fa";
 
 function MyResume() {
   return (
     <section id="resume" className="resume-section">
       <div className="resume-container">
-        <h2 className="section-title">Resume</h2>
-        
+        <h2 className="section-title">Curriculum Vitae</h2>
+        <p className="resume-subtitle">
+          Download or view my updated, ATS-optimized professional resume.
+        </p>
+
         <div className="holographic-card">
           <div className="holo-content">
-            <h3 className="holo-title">Professional CV</h3>
+            <div className="resume-icon-badge">
+              <FaFileAlt />
+            </div>
+
+            <h3 className="holo-title">Ahmed Mohamed Ghallab</h3>
+            <p className="holo-role-tag">Front-End Developer (React.js / Next.js)</p>
+
+            {/* Quick CV Highlight Grid */}
+            <div className="resume-meta-grid">
+              <div className="meta-card">
+                <FaBriefcase className="meta-icon" />
+                <div>
+                  <strong>Experience</strong>
+                  <span>2+ Years Hands-On</span>
+                </div>
+              </div>
+              <div className="meta-card">
+                <FaGraduationCap className="meta-icon" />
+                <div>
+                  <strong>Degree</strong>
+                  <span>BSc CS & IT (2018–2022)</span>
+                </div>
+              </div>
+              <div className="meta-card">
+                <FaCode className="meta-icon" />
+                <div>
+                  <strong>Core Stack</strong>
+                  <span>React, Next.js, TS, Tailwind</span>
+                </div>
+              </div>
+              <div className="meta-card">
+                <FaLanguage className="meta-icon" />
+                <div>
+                  <strong>Languages</strong>
+                  <span>Arabic (Native), English (Proficient)</span>
+                </div>
+              </div>
+            </div>
+
             <p className="holo-text">
-              Unlock the full details of my journey, skills, and experience. 
-              Grab a copy of my resume below.
+              Targeting Junior & Mid-Level Front-End roles in Egypt, UAE, or Remote.
+              Engineered with clean code, modern architectures, and real-world business impacts.
             </p>
-            
+
             <div className="holo-actions">
-              <a href={ResumeFile} download="Ahmed_Ghallab_Resume.pdf" className="btn-holo glow-effect">
-                <span>Download PDF</span>
+              <a
+                href={ResumeFile}
+                download="Ahmed_Ghallab_FrontEnd_Resume.pdf"
+                className="btn-holo glow-effect"
+              >
+                <FaDownload style={{ marginRight: "0.5rem" }} />
+                <span>Download CV (PDF)</span>
               </a>
-              <a href={ResumeFile} target="_blank" rel="noreferrer" className="btn-holo-outline">
-                View Online
+              <a
+                href={ResumeFile}
+                target="_blank"
+                rel="noreferrer"
+                className="btn-holo-outline"
+              >
+                <FaEye style={{ marginRight: "0.5rem" }} />
+                View Full CV Online
               </a>
             </div>
           </div>
-          
+
           <div className="holo-bg"></div>
         </div>
       </div>

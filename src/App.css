@@ -8,12 +8,17 @@
 
   /* Neon Accents */
   --primary: #00f260; /* Electric Green */
+  --primary-dim: rgba(0, 242, 96, 0.25);
   --primary-gradient: linear-gradient(135deg, #00f260 0%, #0575e6 100%);
   --secondary: #d53369; /* Hot Pink */
+  --secondary-dim: rgba(213, 51, 105, 0.25);
   --secondary-gradient: linear-gradient(135deg, #d53369 0%, #daae51 100%);
 
   --accent-cyan: #00e5ff;
+  --accent-cyan-dim: rgba(0, 229, 255, 0.2);
   --accent-purple: #bd34fe;
+  --accent-purple-dim: rgba(189, 52, 254, 0.2);
+  --accent-gold: #f59e0b;
 
   /* Text */
   --text-main: #e2e8f0;
@@ -21,13 +26,14 @@
   --text-highlight: #ffffff;
 
   /* Glassmorphism */
-  --glass-bg: rgba(15, 23, 42, 0.6);
+  --glass-bg: rgba(11, 17, 32, 0.75);
   --glass-border: rgba(255, 255, 255, 0.08);
   --glass-blur: 16px;
 
   /* Typography */
   --font-heading: "Space Grotesk", sans-serif;
   --font-body: "Outfit", sans-serif;
+  --font-code: "Space Grotesk", monospace;
 
   /* Transitions */
   --transition-fast: 0.2s ease;
@@ -190,11 +196,23 @@ a {
 
 /* --- Layout Wrappers --- */
 main {
-  max-width: 1300px;
+  max-width: 1250px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 4.5rem;
   position: relative;
   z-index: 2;
+}
+
+@media (max-width: 1024px) {
+  main {
+    padding: 0 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  main {
+    padding: 0 1.2rem;
+  }
 }
 
 /* --- Animations --- */
