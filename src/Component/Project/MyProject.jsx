@@ -6,8 +6,6 @@ import {
   FaBootstrap,
   FaJsSquare,
   FaReact,
-  FaHome,
-  FaTasks,
   FaExternalLinkAlt,
   FaGithub,
   FaHeart,
@@ -16,17 +14,53 @@ import {
   FaStore,
   FaUtensils,
   FaCloudSun,
-  FaStopwatch,
+  FaCouch,
+  FaTasks,
   FaLayerGroup,
 } from "react-icons/fa";
-import { MdDevices } from "react-icons/md";
+import { MdDevices, MdOutlinePhotoLibrary } from "react-icons/md";
 import { SiTailwindcss, SiNextdotjs, SiTypescript, SiSupabase } from "react-icons/si";
 import { TbApi } from "react-icons/tb";
 
-import EnayaImg from "../../assets/images/projectImage/enaya/enaya.webp";
-import RealStateImg from "../../assets/images/projectImage/realestate/realstate.webp";
-import TodoImg from "../../assets/images/projectImage/ToDoApp/ToDoApp.webp";
-import WeatherImg from "../../assets/images/projectImage/Weather-App/Weather.webp";
+// 1. Enaya (2 images)
+import Enaya1 from "../../assets/images/projectImage/enaya/enaya.webp";
+import Enaya2 from "../../assets/images/projectImage/enaya/enaya-demo-2.webp";
+
+// 2. Wedding Platform (2 images)
+import Wedding1 from "../../assets/images/projectImage/WeddingPlatform/wedding-demo.webp";
+import Wedding2 from "../../assets/images/projectImage/WeddingPlatform/wedding-demo2.webp";
+
+// 3. Tadweer IOMS (2 images)
+import Tadweer1 from "../../assets/images/projectImage/Tadweer-IOMS/ioms-demo.webp";
+import Tadweer2 from "../../assets/images/projectImage/Tadweer-IOMS/ioms-demo2.webp";
+
+// 4. Tractor (2 images)
+import Tractor1 from "../../assets/images/projectImage/tractor/tractor-demo.webp";
+import Tractor2 from "../../assets/images/projectImage/tractor/tractor-demo2.webp";
+
+// 5. Real Estate (2 images)
+import RealState1 from "../../assets/images/projectImage/realestate/realstate.webp";
+import RealState2 from "../../assets/images/projectImage/realestate/realstate-demo2.webp";
+
+// 6. Sprints Final (2 images)
+import Sprints1 from "../../assets/images/projectImage/SprintsFinal/SprintsFinal-demo.webp";
+import Sprints2 from "../../assets/images/projectImage/SprintsFinal/SprintsFinal-demo2.webp";
+
+// 7. Nooni (2 images)
+import Nooni1 from "../../assets/images/projectImage/nooni/nooni.webp";
+import Nooni2 from "../../assets/images/projectImage/nooni/nooni2.webp";
+
+// 8. F&B Shop (2 images)
+import FBShop1 from "../../assets/images/projectImage/F&B Shop/F&B Shop-demo.webp";
+import FBShop2 from "../../assets/images/projectImage/F&B Shop/F&B Shop-demo2.webp";
+
+// 9. Weather (2 images)
+import Weather1 from "../../assets/images/projectImage/Weather-App/Weather.webp";
+import Weather2 from "../../assets/images/projectImage/Weather-App/Weather-demo2.webp";
+
+// 10. ToDo App (2 images)
+import Todo1 from "../../assets/images/projectImage/ToDoApp/ToDoApp.webp";
+import Todo2 from "../../assets/images/projectImage/ToDoApp/ToDoApp-demo2.webp";
 
 const projectsData = [
   // ================= TIER 1: FLAGSHIP & SAAS =================
@@ -38,7 +72,8 @@ const projectsData = [
     category: "Production E-Commerce & AI",
     github: "https://github.com/Ahmed-Ghallab/enaya",
     demo: "https://www.enayak.com/",
-    image: EnayaImg,
+    images: [Enaya1, Enaya2],
+    imageCaptions: ["Hero & Product Showcase", "Special Deals & Catalog View"],
     badgeColor: "emerald",
     featured: true,
     highlights: [
@@ -65,7 +100,8 @@ const projectsData = [
     category: "SaaS & Dynamic Customizer",
     github: "https://github.com/Ahmed-Ghallab/premium-wedding-platform",
     demo: "https://premium-wedding-platform-psi.vercel.app/",
-    iconPreview: <FaHeart />,
+    images: [Wedding1, Wedding2],
+    imageCaptions: ["Landing Experience", "Live Visual Studio Customizer"],
     badgeColor: "rose",
     featured: true,
     highlights: [
@@ -92,7 +128,8 @@ const projectsData = [
     category: "Enterprise Management",
     github: "https://github.com/Ahmed-Ghallab/tadweer-ioms",
     demo: "https://tadweer-ioms.vercel.app/",
-    iconPreview: <FaRecycle />,
+    images: [Tadweer1, Tadweer2],
+    imageCaptions: ["Agent Auth Portal", "Mission Control Operations Queue"],
     badgeColor: "cyan",
     featured: true,
     highlights: [
@@ -119,7 +156,8 @@ const projectsData = [
     category: "Modern Corporate UI",
     github: "https://github.com/Ahmed-Ghallab/GhalabTractor",
     demo: "https://ghalab-tractor.vercel.app/",
-    iconPreview: <FaTractor />,
+    images: [Tractor1, Tractor2],
+    imageCaptions: ["Hero Overview & CTA", "High-Resolution Equipment View"],
     badgeColor: "amber",
     featured: true,
     highlights: [
@@ -146,7 +184,8 @@ const projectsData = [
     github: "https://github.com/Ahmed-Ghallab/realestate",
     demo: "https://oryxinvestmentsegypt.com/",
     demoFallback: "https://realestate-rose-eight.vercel.app/",
-    image: RealStateImg,
+    images: [RealState1, RealState2],
+    imageCaptions: ["Platform Hero & App Showcase", "Why Oryx & Mission Section"],
     badgeColor: "violet",
     featured: true,
     highlights: [
@@ -174,7 +213,8 @@ const projectsData = [
     category: "Fashion Retail Platform",
     github: "https://github.com/Ahmed-Ghallab/SprintsFinal",
     demo: "https://sprints-final.vercel.app/",
-    iconPreview: <FaStore />,
+    images: [Sprints1, Sprints2],
+    imageCaptions: ["New Collection Banner", "Categorized Products & Cart Grid"],
     badgeColor: "blue",
     featured: false,
     highlights: [
@@ -193,6 +233,33 @@ const projectsData = [
     ],
   },
   {
+    id: "nooni",
+    tier: "tier2",
+    tierLabel: "Tier 2 • E-Commerce Store",
+    name: "Nooni – Modern Furniture & Interior Design Store",
+    category: "Designer Furniture E-Commerce",
+    github: "https://github.com/Ahmed-Ghallab/nooni",
+    demo: "https://nooni-ecommerce.vercel.app/",
+    images: [Nooni1, Nooni2],
+    imageCaptions: ["Hero Showcase & Featured Seating", "Shop by Category Section"],
+    badgeColor: "teal",
+    featured: false,
+    highlights: [
+      "Minimalist Modern Design & Grid Layout",
+      "Category Filtering (Chairs, Tables, Lighting, Beds)",
+      "Interactive Product Views & Cart Triggers",
+      "Responsive Layout on All Viewports",
+    ],
+    description:
+      "A sleek modern furniture e-commerce storefront designed with clean aesthetics, interactive category navigation, product detail modals, and high-conversion shopping triggers.",
+    technologies: [
+      { name: "React.js", icon: <FaReact /> },
+      { name: "HTML5", icon: <FaHtml5 /> },
+      { name: "CSS3", icon: <FaCss3Alt /> },
+      { name: "JavaScript", icon: <FaJsSquare /> },
+    ],
+  },
+  {
     id: "fb-shop",
     tier: "tier2",
     tierLabel: "Tier 2 • Online Store",
@@ -200,7 +267,8 @@ const projectsData = [
     category: "Online Ordering Demo",
     github: "https://github.com/Ahmed-Ghallab/testShop",
     demo: "https://test-shop-cyan.vercel.app/contact.html",
-    iconPreview: <FaUtensils />,
+    images: [FBShop1, FBShop2],
+    imageCaptions: ["Store Hero & Ordering Promo", "Product Catalog Details"],
     badgeColor: "teal",
     featured: false,
     highlights: [
@@ -227,7 +295,8 @@ const projectsData = [
     category: "OpenWeather API App",
     github: "https://github.com/Ahmed-Ghallab/weather-dashboard",
     demo: "https://weather-dashboard-one-sigma.vercel.app/",
-    image: WeatherImg,
+    images: [Weather1, Weather2],
+    imageCaptions: ["Live City Search & Current Weather", "Forecast Metrics & Details"],
     badgeColor: "sky",
     featured: false,
     highlights: [
@@ -252,7 +321,8 @@ const projectsData = [
     category: "CRUD State App",
     github: "https://github.com/Ahmed-Ghallab/task-management",
     demo: "https://task-management-orpin-iota.vercel.app/",
-    image: TodoImg,
+    images: [Todo1, Todo2],
+    imageCaptions: ["Task Creation & Active Board", "Filtered Status & Priority View"],
     badgeColor: "indigo",
     featured: false,
     highlights: [
@@ -269,39 +339,96 @@ const projectsData = [
       { name: "CSS3", icon: <FaCss3Alt /> },
     ],
   },
-  {
-    id: "stopwatch",
-    tier: "tier3",
-    tierLabel: "Tier 3 • Interactive Utility",
-    name: "High-Precision Stopwatch & Lap Timer",
-    category: "DOM & Timing Engine",
-    github: "https://github.com/Ahmed-Ghallab/stopwatch",
-    demo: "https://stopwatch-ten-hazel.vercel.app/",
-    iconPreview: <FaStopwatch />,
-    badgeColor: "pink",
-    featured: false,
-    highlights: [
-      "Millisecond-Accurate Interval Timing",
-      "Interactive Lap Recording System",
-      "Optimized DOM Event Listeners",
-      "Smooth Neomorphic Visual Controls",
-    ],
-    description:
-      "Interactive timing application built with vanilla JavaScript, showcasing event loop handling, timing accuracy, lap-split calculations, and responsive controls.",
-    technologies: [
-      { name: "JavaScript (ES6+)", icon: <FaJsSquare /> },
-      { name: "HTML5", icon: <FaHtml5 /> },
-      { name: "CSS3", icon: <FaCss3Alt /> },
-    ],
-  },
 ];
 
 const tierFilters = [
   { id: "all", label: "All Projects (10)" },
   { id: "tier1", label: "Tier 1: Flagship & SaaS (5)" },
-  { id: "tier2", label: "Tier 2: E-Commerce & Business (2)" },
-  { id: "tier3", label: "Tier 3: Tools & Practice (3)" },
+  { id: "tier2", label: "Tier 2: E-Commerce & Stores (3)" },
+  { id: "tier3", label: "Tier 3: Tools & API Apps (2)" },
 ];
+
+function ProjectImageGallery({ images, captions, name, badgeColor }) {
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  if (!images || images.length === 0) return null;
+
+  return (
+    <div className="project-image-wrapper">
+      {/* Images container with smooth fade transition */}
+      <div className="project-images-viewport">
+        {images.map((img, idx) => (
+          <img
+            key={idx}
+            src={img}
+            alt={`${name} - ${captions?.[idx] || `View ${idx + 1}`}`}
+            className={`project-img ${idx === activeIdx ? "active" : ""}`}
+            loading="lazy"
+            decoding="async"
+            width="600"
+            height="380"
+          />
+        ))}
+      </div>
+
+      {/* Dual Image Controls Overlay */}
+      <div className="gallery-controls-overlay">
+        {/* Caption & View Pill */}
+        <div className="gallery-view-tabs">
+          {images.map((_, idx) => (
+            <button
+              key={idx}
+              type="button"
+              className={`gallery-view-btn ${idx === activeIdx ? "active" : ""}`}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setActiveIdx(idx);
+              }}
+              aria-label={`Show ${captions?.[idx] || `View ${idx + 1}`}`}
+            >
+              <MdOutlinePhotoLibrary className="gallery-btn-icon" />
+              <span>{idx === 0 ? "View 1" : "View 2"}</span>
+            </button>
+          ))}
+        </div>
+
+        {/* Arrow Switchers */}
+        <div className="gallery-arrows">
+          <button
+            type="button"
+            className="gallery-nav-arrow prev"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setActiveIdx((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+            }}
+            aria-label="Previous view"
+          >
+            ‹
+          </button>
+          <button
+            type="button"
+            className="gallery-nav-arrow next"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setActiveIdx((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+            }}
+            aria-label="Next view"
+          >
+            ›
+          </button>
+        </div>
+
+        {/* Current Image Caption Sub-bar */}
+        <div className="gallery-caption-badge">
+          {captions?.[activeIdx] || (activeIdx === 0 ? "Primary Preview" : "Detail View")}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function MyProject() {
   const [selectedTier, setSelectedTier] = useState("all");
@@ -315,7 +442,7 @@ function MyProject() {
     <section id="projects" className="projects-section">
       <h2 className="section-title">Featured Projects</h2>
       <p className="projects-subtitle">
-        A curated showcase of production applications, SaaS platforms, e-commerce systems, and interactive tools built with React.js, Next.js, TypeScript, and modern APIs.
+        A curated showcase of production applications, SaaS platforms, e-commerce systems, and interactive tools. Each project features dual visual previews highlighting key user flows.
       </p>
 
       {/* Tier Filter Tabs */}
@@ -338,41 +465,13 @@ function MyProject() {
             className={`project-card ${project.featured ? "featured-project" : ""}`}
             key={project.id}
           >
-            {/* Image / Visual Mockup Side */}
-            <div className="project-image-wrapper">
-              {project.image ? (
-                <img
-                  src={project.image}
-                  alt={project.name}
-                  className="project-img"
-                  loading="lazy"
-                  decoding="async"
-                  width="600"
-                  height="380"
-                />
-              ) : (
-                <div className={`project-code-mockup ${project.badgeColor}`}>
-                  <div className="mockup-header">
-                    <span className="dot dot-red"></span>
-                    <span className="dot dot-yellow"></span>
-                    <span className="dot dot-green"></span>
-                    <span className="mockup-url">{project.category}</span>
-                  </div>
-                  <div className="mockup-body">
-                    <div className="mockup-icon-large">{project.iconPreview}</div>
-                    <h4 className="mockup-title">{project.name}</h4>
-                    <p className="mockup-sub">{project.category}</p>
-                    <div className="mockup-tags">
-                      {project.technologies.slice(0, 3).map((t, idx) => (
-                        <span key={idx} className="mockup-tag">
-                          {t.name}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
+            {/* Dual Image Gallery Side */}
+            <ProjectImageGallery
+              images={project.images}
+              captions={project.imageCaptions}
+              name={project.name}
+              badgeColor={project.badgeColor}
+            />
 
             {/* Content Side */}
             <div className="project-content">
