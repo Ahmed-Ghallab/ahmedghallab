@@ -23,10 +23,10 @@ import { MdDevices } from "react-icons/md";
 import { SiTailwindcss, SiNextdotjs, SiTypescript, SiSupabase } from "react-icons/si";
 import { TbApi } from "react-icons/tb";
 
-import EnayaImg from "../../assets/images/projectImage/enaya/enaya.png";
-import RealStateImg from "../../assets/images/projectImage/realestate/realstate.png";
-import TodoImg from "../../assets/images/projectImage/ToDoApp/ToDoApp (1).png";
-import WeatherImg from "../../assets/images/projectImage/Weather-App/Weather.png";
+import EnayaImg from "../../assets/images/projectImage/enaya/enaya.webp";
+import RealStateImg from "../../assets/images/projectImage/realestate/realstate.webp";
+import TodoImg from "../../assets/images/projectImage/ToDoApp/ToDoApp.webp";
+import WeatherImg from "../../assets/images/projectImage/Weather-App/Weather.webp";
 
 const projectsData = [
   // ================= TIER 1: FLAGSHIP & SAAS =================
@@ -346,6 +346,9 @@ function MyProject() {
                   alt={project.name}
                   className="project-img"
                   loading="lazy"
+                  decoding="async"
+                  width="600"
+                  height="380"
                 />
               ) : (
                 <div className={`project-code-mockup ${project.badgeColor}`}>

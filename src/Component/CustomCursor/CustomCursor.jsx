@@ -2,16 +2,14 @@ import { useEffect, useState, useRef } from "react";
 import "./CustomCursor.css";
 
 function CustomCursor() {
-  const [visible, setVisible] = useState(true);
   const [isDesktop, setIsDesktop] = useState(true);
-  
-  // Use refs for direct DOM manipulation for performance
+
   const dotRef = useRef(null);
   const ringRef = useRef(null);
   const requestRef = useRef(null);
-  
-  const mouse = useRef({ x: 0, y: 0 });
-  const ringPos = useRef({ x: 0, y: 0 });
+
+  const mouse = useRef({ x: -100, y: -100 });
+  const ringPos = useRef({ x: -100, y: -100 });
 
   useEffect(() => {
     const checkDevice = () => {
@@ -19,9 +17,9 @@ function CustomCursor() {
     };
 
     setIsDesktop(checkDevice());
-    
+
     const handleResize = () => setIsDesktop(checkDevice());
-    window.addEventListener("resize", handleResize);
+    window.addEventListener("resize", handleResize, { passive: true });
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
@@ -29,42 +27,41 @@ function CustomCursor() {
     if (!isDesktop) return;
 
     const onMouseMove = (e) => {
-      mouse.current = { x: e.clientX, y: e.clientY };
+      mouse.current.x = e.clientX;
+      mouse.current.y = e.clientY;
       if (dotRef.current) {
-        dotRef.current.style.left = `${e.clientX}px`;
-        dotRef.current.style.top = `${e.clientY}px`;
+        dotRef.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`;
       }
     };
 
-    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("mousemove", onMouseMove, { passive: true });
 
     const animateRing = () => {
-      // Lerp for the ring
-      ringPos.current.x += (mouse.current.x - ringPos.current.x) * 0.15;
-      ringPos.current.y += (mouse.current.y - ringPos.current.y) * 0.15;
+      // Smooth lerp for the ring with GPU transform
+      ringPos.current.x += (mouse.current.x - ringPos.current.x) * 0.18;
+      ringPos.current.y += (mouse.current.y - ringPos.current.y) * 0.18;
 
       if (ringRef.current) {
-        ringRef.current.style.left = `${ringPos.current.x}px`;
-        ringRef.current.style.top = `${ringPos.current.y}px`;
+        ringRef.current.style.transform = `translate3d(${ringPos.current.x}px, ${ringPos.current.y}px, 0) translate(-50%, -50%)`;
       }
-      
+
       requestRef.current = requestAnimationFrame(animateRing);
     };
-    
+
     requestRef.current = requestAnimationFrame(animateRing);
 
     return () => {
       window.removeEventListener("mousemove", onMouseMove);
-      cancelAnimationFrame(requestRef.current);
+      if (requestRef.current) cancelAnimationFrame(requestRef.current);
     };
   }, [isDesktop]);
 
-  if (!isDesktop || !visible) return null;
+  if (!isDesktop) return null;
 
   return (
     <>
-      <div ref={dotRef} className="cursor-dot"></div>
-      <div ref={ringRef} className="cursor-ring"></div>
+      <div ref={dotRef} className="cursor-dot" />
+      <div ref={ringRef} className="cursor-ring" />
     </>
   );
 }

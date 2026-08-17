@@ -1,8 +1,7 @@
 import React from "react";
 import "../../Component/About/MyAbout.css";
-import MyPicture from "../../assets/images/myPicture/ProfileImage.webp";
+import MyPicture from "../../assets/images/myPicture/profile-optimized.webp";
 import {
-  FaUserAlt,
   FaLightbulb,
   FaRocket,
   FaGraduationCap,
@@ -16,7 +15,14 @@ function MyAbout() {
     <section id="about" className="about-wrapper">
       <div className="about-image">
         <div className="image-frame">
-          <img src={MyPicture} alt="Ahmed Ghallab" />
+          <img
+            src={MyPicture}
+            alt="Ahmed Mohamed Ghallab - Front-End Developer"
+            width="380"
+            height="380"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
         <span className="glow-accent"></span>
       </div>
@@ -25,11 +31,11 @@ function MyAbout() {
         <h2 className="section-title" style={{ textAlign: "left", margin: "0 0 1.5rem 0" }}>
           About Me
         </h2>
-        
+
         <p>
           Hello! I'm <span className="highlight">Ahmed Mohamed Ghallab</span>, a Front-End Developer with <strong>2+ years of hands-on development experience</strong> across professional, freelance, and project-based work, backed by a <strong>BSc in Computer Science & Information Technology</strong> (Modern Academy, 2018 – 2022).
         </p>
-        
+
         <p>
           I specialize in building production-grade web applications using <strong>React.js, Next.js, TypeScript, Tailwind CSS, and RESTful APIs</strong>. I have architected and deployed real-world e-commerce platforms with dynamic administration dashboards, SaaS invitation systems with real-time previews, and operations platforms integrated with Supabase.
         </p>
@@ -76,4 +82,3 @@ function MyAbout() {
 }
 
 export default MyAbout;
-

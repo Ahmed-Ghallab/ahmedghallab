@@ -11,7 +11,7 @@ import {
   FaLinkedin,
 } from "react-icons/fa";
 import { IoMail } from "react-icons/io5";
-import LogoFull from "../../assets/images/logo/logo-full3.webp";
+import LogoFull from "../../assets/images/logo/logo-optimized.webp";
 
 function MyNavbar() {
   const [activeSection, setActiveSection] = useState("about");
@@ -27,23 +27,34 @@ function MyNavbar() {
   }, [showOffcanvas]);
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 20);
 
-      const sections = document.querySelectorAll("main section");
-      let current = "";
+          const sections = document.querySelectorAll("main section");
+          let current = "";
 
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop - 120;
-        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + section.offsetHeight) {
-           current = section.getAttribute("id");
-        }
-      });
+          sections.forEach((section) => {
+            const sectionTop = section.offsetTop - 120;
+            if (
+              window.scrollY >= sectionTop &&
+              window.scrollY < sectionTop + section.offsetHeight
+            ) {
+              current = section.getAttribute("id");
+            }
+          });
 
-      setActiveSection(current);
+          if (current) setActiveSection(current);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
