@@ -42,18 +42,20 @@ function MyAbout() {
 
         {/* Professional Metrics Grid (Non-redundant, concise) */}
         <div className="about-quick-info">
-          <div className="info-item">
+          <div className="info-item" title="Experience: 2+ Years Hands-On (E-Commerce & SaaS)">
             <FaBriefcase className="info-icon" />
-            <div>
-              <strong>Experience:</strong>
-              <span>2+ Years Hands-On (E-Commerce & SaaS)</span>
+            <div className="info-item-details">
+              <strong>Experience</strong>
+              <span className="info-val-desktop">2+ Years Hands-On (E-Commerce & SaaS)</span>
+              <span className="info-val-mobile">2+ Years (E-Com & SaaS)</span>
             </div>
           </div>
-          <div className="info-item">
+          <div className="info-item" title="Primary Stack: React.js, Next.js, TypeScript, Tailwind">
             <FaCode className="info-icon" />
-            <div>
-              <strong>Primary Stack:</strong>
-              <span>React.js, Next.js, TypeScript, Tailwind</span>
+            <div className="info-item-details">
+              <strong>Primary Stack</strong>
+              <span className="info-val-desktop">React.js, Next.js, TypeScript, Tailwind</span>
+              <span className="info-val-mobile">React, Next.js, TS & Tailwind</span>
             </div>
           </div>
         </div>

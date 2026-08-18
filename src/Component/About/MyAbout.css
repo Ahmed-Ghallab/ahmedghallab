@@ -89,7 +89,7 @@
 /* --- Quick Info Grid --- */
 .about-quick-info {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 0.9rem;
     margin: 1.5rem 0;
     width: 100%;
@@ -105,6 +105,8 @@
     border-radius: 10px;
     transition: transform 0.2s ease, border-color 0.2s ease;
     min-width: 0;
+    width: 100%;
+    overflow: hidden;
 }
 
 .info-item:hover {
@@ -118,23 +120,42 @@
     flex-shrink: 0;
 }
 
+.info-item-details {
+    min-width: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
 .info-item strong {
     display: block;
     color: var(--text-highlight);
-    font-size: 0.85rem;
+    font-size: clamp(0.78rem, 1.8vw, 0.85rem);
     font-family: var(--font-heading);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin-bottom: 0.1rem;
 }
 
-.info-item span {
-    font-size: 0.78rem;
+.info-val-desktop {
+    display: block;
+    font-size: clamp(0.72rem, 1.6vw, 0.78rem);
     color: var(--text-muted);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    display: block;
+    width: 100%;
+}
+
+.info-val-mobile {
+    display: none;
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    font-weight: 500;
 }
 
 /* --- Badges --- */
@@ -186,25 +207,39 @@
 
     .about-quick-info {
         grid-template-columns: repeat(2, 1fr);
-        gap: 0.55rem;
+        gap: 0.45rem;
         margin: 1.2rem 0;
     }
 
     .info-item {
-        padding: 0.55rem 0.7rem;
-        gap: 0.5rem;
+        padding: 0.6rem 0.35rem;
+        gap: 0.35rem;
+        flex-direction: column;
+        text-align: center;
+        border-radius: 8px;
     }
 
     .info-icon {
-        font-size: 1.1rem;
+        font-size: 1.05rem;
+    }
+
+    .info-item-details {
+        text-align: center;
+        width: 100%;
     }
 
     .info-item strong {
-        font-size: 0.76rem;
+        font-size: 0.7rem;
+        margin-bottom: 0.05rem;
     }
 
-    .info-item span {
-        font-size: 0.72rem;
+    .info-val-desktop {
+        display: none;
+    }
+
+    .info-val-mobile {
+        display: block;
+        font-size: 0.64rem;
     }
 
     .about-badges {
@@ -229,6 +264,18 @@
     }
     .about-quick-info {
         grid-template-columns: 1fr 1fr;
-        gap: 0.4rem;
+        gap: 0.3rem;
+    }
+    .info-item {
+        padding: 0.5rem 0.2rem;
+    }
+    .info-icon {
+        font-size: 0.95rem;
+    }
+    .info-item strong {
+        font-size: 0.64rem;
+    }
+    .info-val-mobile {
+        font-size: 0.58rem;
     }
 }
