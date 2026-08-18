@@ -12,7 +12,6 @@ import {
   FaLaptopCode,
   FaAward,
   FaUniversity,
-  FaArrowRight,
 } from "react-icons/fa";
 
 const experiencesData = [
@@ -42,7 +41,6 @@ const experiencesData = [
     company: "Fassla Software",
     location: "Cairo, Egypt",
     period: "Feb 2025 – Jan 2026",
-    statusBadge: "1 Year",
     featured: false,
     tags: ["React.js", "JavaScript (ES6+)", "HTML5/CSS3", "UI/UX", "Git / GitHub"],
     bullets: [
@@ -59,7 +57,6 @@ const experiencesData = [
     company: "Sprints.ai (React & Next.js Track)",
     location: "Cairo, Egypt",
     period: "Oct 2024 – Jan 2025",
-    statusBadge: "Intensive",
     featured: false,
     tags: ["React.js", "Next.js", "Tailwind CSS", "REST APIs", "State Management"],
     bullets: [
@@ -74,7 +71,6 @@ const experiencesData = [
     company: "Refilex Software",
     location: "Cairo, Egypt",
     period: "Jan 2024 – Sep 2024",
-    statusBadge: "9 Months",
     featured: false,
     tags: ["React.js", "JavaScript (ES6+)", "HTML5", "CSS3", "Responsive UI"],
     bullets: [
@@ -215,7 +211,9 @@ function MyExperience() {
                       <div>
                         <div className="card-role-wrap">
                           <h4 className="card-role">{exp.role}</h4>
-                          <span className="card-status-pill">{exp.statusBadge}</span>
+                          {exp.statusBadge && (
+                            <span className="card-status-pill">{exp.statusBadge}</span>
+                          )}
                         </div>
 
                         <h5 className="card-company">
