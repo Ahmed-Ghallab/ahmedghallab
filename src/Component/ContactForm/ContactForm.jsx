@@ -89,18 +89,21 @@ function ContactForm() {
       icon: <IoMail />,
       title: "Email",
       value: "eng.ahmedghallab@gmail.com",
+      mobileValue: "Send Email",
       link: "mailto:eng.ahmedghallab@gmail.com",
     },
     {
       icon: <FaPhoneAlt />,
       title: "Phone / WhatsApp",
       value: "+20 127 954 7848",
+      mobileValue: "+20 127 954 7848",
       link: "https://wa.me/201279547848",
     },
     {
       icon: <FaLinkedin />,
       title: "LinkedIn",
       value: "ahmedghallab22",
+      mobileValue: "LinkedIn Profile",
       link: "https://www.linkedin.com/in/ahmedghallab22/",
     },
   ];
@@ -121,11 +124,13 @@ function ContactForm() {
             target="_blank"
             rel="noreferrer"
             className="contact-quick-card"
+            title={`${c.title}: ${c.value}`}
           >
             <div className="contact-card-icon">{c.icon}</div>
             <div className="contact-card-details">
               <h4>{c.title}</h4>
-              <p>{c.value}</p>
+              <p className="contact-val-desktop">{c.value}</p>
+              <p className="contact-val-mobile">{c.mobileValue}</p>
             </div>
           </a>
         ))}

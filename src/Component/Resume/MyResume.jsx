@@ -32,23 +32,26 @@ function MyResume() {
             <div className="resume-meta-grid">
               <div className="meta-card">
                 <FaBriefcase className="meta-icon" />
-                <div>
+                <div className="meta-details">
                   <strong>Experience</strong>
-                  <span>2+ Years Hands-On</span>
+                  <span className="meta-val-desktop">2+ Years Hands-On</span>
+                  <span className="meta-val-mobile">2+ Years</span>
                 </div>
               </div>
               <div className="meta-card">
                 <FaGraduationCap className="meta-icon" />
-                <div>
+                <div className="meta-details">
                   <strong>Degree</strong>
-                  <span>BSc CS & IT (2018–2022)</span>
+                  <span className="meta-val-desktop">BSc CS & IT (2018–2022)</span>
+                  <span className="meta-val-mobile">BSc CS & IT</span>
                 </div>
               </div>
               <div className="meta-card">
                 <FaCode className="meta-icon" />
-                <div>
+                <div className="meta-details">
                   <strong>Core Stack</strong>
-                  <span>React, Next.js, TS, Tailwind</span>
+                  <span className="meta-val-desktop">React, Next.js, TS, Tailwind</span>
+                  <span className="meta-val-mobile">React & Next.js</span>
                 </div>
               </div>
             </div>

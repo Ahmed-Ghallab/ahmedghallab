@@ -302,6 +302,11 @@
     border-radius: 50px;
     font-size: 0.78rem;
     font-family: var(--font-code);
+    pointer-events: none;
+    cursor: default;
+    user-select: text;
+    -webkit-user-select: text;
+    -webkit-touch-callout: none;
 }
 
 .card-location {
@@ -311,6 +316,11 @@
     align-items: center;
     gap: 0.4rem;
     margin-bottom: 1.1rem;
+    pointer-events: none;
+    cursor: default;
+    user-select: text;
+    -webkit-user-select: text;
+    -webkit-touch-callout: none;
 }
 
 .card-bullets {
@@ -442,6 +452,20 @@
     font-size: 0.78rem;
     color: var(--text-muted);
     font-family: var(--font-code);
+    pointer-events: none;
+    cursor: default;
+    user-select: text;
+    -webkit-user-select: text;
+    -webkit-touch-callout: none;
+}
+
+.degree-period,
+.degree-loc {
+    pointer-events: none;
+    cursor: default;
+    user-select: text;
+    -webkit-user-select: text;
+    -webkit-touch-callout: none;
 }
 
 .degree-desc {

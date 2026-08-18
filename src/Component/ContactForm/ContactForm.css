@@ -77,14 +77,18 @@
 }
 
 .contact-card-details h4 {
-    font-size: 0.78rem;
+    font-size: clamp(0.72rem, 1.6vw, 0.78rem);
     color: var(--text-muted);
     margin-bottom: 0.12rem;
     font-family: var(--font-heading);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.contact-card-details p {
-    font-size: 0.86rem;
+.contact-val-desktop {
+    display: block;
+    font-size: clamp(0.78rem, 1.7vw, 0.86rem);
     color: var(--text-highlight);
     font-weight: 500;
     margin: 0;
@@ -92,9 +96,24 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    max-width: 100%;
 }
 
-.contact-quick-card:hover .contact-card-details p {
+.contact-val-mobile {
+    display: none;
+    font-size: clamp(0.68rem, 2.2vw, 0.78rem);
+    color: var(--text-highlight);
+    font-weight: 600;
+    margin: 0;
+    transition: color 0.2s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+.contact-quick-card:hover .contact-val-desktop,
+.contact-quick-card:hover .contact-val-mobile {
     color: var(--primary);
 }
 
@@ -400,8 +419,8 @@ textarea {
         margin-bottom: 2rem;
     }
     .contact-quick-card {
-        padding: 0.7rem 0.45rem;
-        gap: 0.4rem;
+        padding: 0.7rem 0.35rem;
+        gap: 0.35rem;
         flex-direction: column;
         text-align: center;
         border-radius: 10px;
@@ -413,12 +432,17 @@ textarea {
     }
     .contact-card-details {
         text-align: center;
+        width: 100%;
     }
     .contact-card-details h4 {
-        font-size: 0.7rem;
+        font-size: 0.68rem;
     }
-    .contact-card-details p {
-        font-size: 0.7rem;
+    .contact-val-desktop {
+        display: none;
+    }
+    .contact-val-mobile {
+        display: block;
+        font-size: 0.68rem;
     }
 }
 
@@ -436,9 +460,19 @@ textarea {
         margin-bottom: 1.6rem;
     }
     .contact-quick-card {
-        padding: 0.55rem 0.3rem;
+        padding: 0.55rem 0.2rem;
+        border-radius: 8px;
     }
-    .contact-card-details p {
+    .contact-card-icon {
+        width: 28px;
+        height: 28px;
+        font-size: 0.9rem;
+        border-radius: 7px;
+    }
+    .contact-card-details h4 {
+        font-size: 0.62rem;
+    }
+    .contact-val-mobile {
         font-size: 0.62rem;
     }
     .form-row-2col {
