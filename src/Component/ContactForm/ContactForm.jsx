@@ -5,6 +5,10 @@ import {
   FaPhoneAlt,
   FaPaperPlane,
   FaCheckCircle,
+  FaWhatsapp,
+  FaSpinner,
+  FaExclamationTriangle,
+  FaEnvelope,
 } from "react-icons/fa";
 import { IoMail } from "react-icons/io5";
 
@@ -15,24 +19,69 @@ function ContactForm() {
     phone: "",
     message: "",
   });
-  const [submitted, setSubmitted] = useState(false);
+
+  const [status, setStatus] = useState("idle"); // 'idle' | 'loading' | 'success' | 'error'
+  const [errorMsg, setErrorMsg] = useState("");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    const subject = `Portfolio Inquiry from ${formData.fullName}`;
-    const body = `Name: ${formData.fullName}\nEmail: ${formData.email}\nPhone: ${formData.phone}\n\nMessage:\n${formData.message}`;
+    setStatus("loading");
+    setErrorMsg("");
 
-    setSubmitted(true);
-    setTimeout(() => {
-      window.location.href = `mailto:eng.ahmedghallab@gmail.com?subject=${encodeURIComponent(
-        subject
-      )}&body=${encodeURIComponent(body)}`;
-    }, 400);
+    try {
+      const response = await fetch(
+        "https://formsubmit.co/ajax/eng.ahmedghallab@gmail.com",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            name: formData.fullName,
+            email: formData.email,
+            phone: formData.phone || "Not provided",
+            message: formData.message,
+            _subject: `⚡ Portfolio Message from ${formData.fullName}`,
+            _template: "table",
+            _captcha: "false",
+          }),
+        }
+      );
+
+      const result = await response.json();
+
+      if (response.ok && (result.success === "true" || result.success === true)) {
+        setStatus("success");
+      } else {
+        throw new Error(result.message || "Failed to transmit message.");
+      }
+    } catch (err) {
+      console.warn("Direct form submission error, offering mailto fallback:", err);
+      setStatus("error");
+      setErrorMsg("Network transmission delay. You can send directly via Email or WhatsApp below.");
+    }
   };
+
+  const handleReset = () => {
+    setFormData({ fullName: "", email: "", phone: "", message: "" });
+    setStatus("idle");
+    setErrorMsg("");
+  };
+
+  const mailtoLink = `mailto:eng.ahmedghallab@gmail.com?subject=${encodeURIComponent(
+    `Portfolio Inquiry from ${formData.fullName || "Visitor"}`
+  )}&body=${encodeURIComponent(
+    `Name: ${formData.fullName}\nEmail: ${formData.email}\nPhone: ${formData.phone}\n\nMessage:\n${formData.message}`
+  )}`;
+
+  const whatsappLink = `https://wa.me/201279547848?text=${encodeURIComponent(
+    `Hello Ahmed, my name is ${formData.fullName || "Visitor"}. ${formData.message || "I am reaching out regarding a front-end opportunity."}`
+  )}`;
 
   // 3 Primary Direct Contact Channels
   const directContacts = [
@@ -84,19 +133,61 @@ function ContactForm() {
 
       {/* Contact Form Box */}
       <div className="contact-wrapper">
-        <h3 className="form-title">Send a Direct Message</h3>
+        <div className="form-header-area">
+          <h3 className="form-title">Send a Direct Message</h3>
+          <p className="form-intro-note">
+            Your message is delivered straight to my personal inbox (<strong>eng.ahmedghallab@gmail.com</strong>).
+          </p>
+        </div>
 
-        {submitted ? (
+        {status === "success" ? (
           <div className="form-success-msg">
             <FaCheckCircle className="success-icon" />
-            <h4>Thank you, {formData.fullName}!</h4>
-            <p>Your default email client is opening to send this message.</p>
+            <h4>Message Sent Successfully!</h4>
+            <p>
+              Thank you, <strong>{formData.fullName}</strong>. Your message has been delivered directly to Ahmed's inbox. You will receive a response at <strong>{formData.email}</strong> shortly.
+            </p>
+            <div className="success-actions">
+              <button onClick={handleReset} className="reset-form-btn">
+                Send Another Message
+              </button>
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noreferrer"
+                className="btn-quick-wa"
+              >
+                <FaWhatsapp /> Chat on WhatsApp
+              </a>
+            </div>
           </div>
         ) : (
           <form className="contact-form" onSubmit={handleFormSubmit}>
+            {status === "error" && (
+              <div className="form-error-banner">
+                <FaExclamationTriangle className="error-banner-icon" />
+                <div className="error-banner-text">
+                  <p>{errorMsg}</p>
+                  <div className="error-banner-actions">
+                    <a href={mailtoLink} className="fallback-btn email-fb">
+                      <FaEnvelope /> Send via Email App
+                    </a>
+                    <a
+                      href={whatsappLink}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="fallback-btn wa-fb"
+                    >
+                      <FaWhatsapp /> Send via WhatsApp
+                    </a>
+                  </div>
+                </div>
+              </div>
+            )}
+
             <div className="form-row-2col">
               <div className="form-group">
-                <label>Full Name</label>
+                <label>Full Name *</label>
                 <input
                   type="text"
                   name="fullName"
@@ -104,11 +195,12 @@ function ContactForm() {
                   value={formData.fullName}
                   onChange={handleChange}
                   required
+                  disabled={status === "loading"}
                 />
               </div>
 
               <div className="form-group">
-                <label>Email Address</label>
+                <label>Email Address *</label>
                 <input
                   type="email"
                   name="email"
@@ -116,6 +208,7 @@ function ContactForm() {
                   value={formData.email}
                   onChange={handleChange}
                   required
+                  disabled={status === "loading"}
                 />
               </div>
             </div>
@@ -125,28 +218,55 @@ function ContactForm() {
               <input
                 type="tel"
                 name="phone"
-                placeholder="+20 123 456 7890"
+                placeholder="+20 127 954 7848"
                 value={formData.phone}
                 onChange={handleChange}
+                disabled={status === "loading"}
               />
             </div>
 
             <div className="form-group">
-              <label>Message</label>
+              <label>Message *</label>
               <textarea
                 name="message"
                 rows="4"
-                placeholder="Tell me about the role, project requirements, or opportunity..."
+                placeholder="Tell me about your project, team opportunity, or timeline..."
                 value={formData.message}
                 onChange={handleChange}
                 required
+                disabled={status === "loading"}
               />
             </div>
 
-            <button type="submit" className="submit-btn">
-              <FaPaperPlane style={{ marginRight: "0.5rem" }} />
-              Send Message
-            </button>
+            <div className="form-submit-row">
+              <button
+                type="submit"
+                className={`submit-btn ${status === "loading" ? "loading" : ""}`}
+                disabled={status === "loading"}
+              >
+                {status === "loading" ? (
+                  <>
+                    <FaSpinner className="btn-spinner" />
+                    Sending Message...
+                  </>
+                ) : (
+                  <>
+                    <FaPaperPlane style={{ marginRight: "0.5rem" }} />
+                    Send Message
+                  </>
+                )}
+              </button>
+
+              <a
+                href="https://wa.me/201279547848"
+                target="_blank"
+                rel="noreferrer"
+                className="direct-whatsapp-btn"
+                title="Instant Chat on WhatsApp"
+              >
+                <FaWhatsapp /> Quick WhatsApp
+              </a>
+            </div>
           </form>
         )}
       </div>
