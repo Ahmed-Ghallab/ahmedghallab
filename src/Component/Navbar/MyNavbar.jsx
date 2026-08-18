@@ -43,14 +43,15 @@ function MyNavbar() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [showOffcanvas]);
 
-  // Scroll spy & navbar background blur
+  // High-performance scroll spy with passive RAF
   useEffect(() => {
     let ticking = false;
 
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          setScrolled(window.scrollY > 20);
+          const isScrolled = window.scrollY > 25;
+          setScrolled(isScrolled);
 
           const sections = document.querySelectorAll("main section");
           const scrollPos = window.scrollY + window.innerHeight * 0.35;
@@ -66,7 +67,7 @@ function MyNavbar() {
 
           if (current) {
             setActiveSection(current);
-          } else if (window.scrollY < 250) {
+          } else if (window.scrollY < 200) {
             setActiveSection("about");
           }
 
@@ -166,7 +167,7 @@ function MyNavbar() {
         </div>
       </nav>
 
-      {/* Mobile Navigation Bar */}
+      {/* Top Mobile Bar (Logo & Menu Button) */}
       <nav className={`my-nav mobile-nav ${scrolled ? "scrolled" : ""}`}>
         <div
           className="nav-logo-wrapper-mobile"
@@ -186,6 +187,27 @@ function MyNavbar() {
           <span className="hamburger-line line-3"></span>
         </button>
       </nav>
+
+      {/* 2026 Apple Liquid Mirror Glass Bottom Floating Dock (Mobile Screen) */}
+      <div className="mobile-mirror-dock" aria-label="Mobile Navigation Dock">
+        <div className="mirror-dock-capsule">
+          {sections.map(({ id, label, icon }) => {
+            const isActive = activeSection === id;
+            return (
+              <button
+                key={id}
+                className={`mirror-dock-btn ${isActive ? "active" : ""}`}
+                onClick={() => handleNavClick(id)}
+                aria-label={label}
+                title={label}
+              >
+                <span className="mirror-icon-box">{icon}</span>
+                {isActive && <span className="mirror-active-dot"></span>}
+              </button>
+            );
+          })}
+        </div>
+      </div>
 
       {/* Modern Offcanvas Mobile Drawer */}
       <div className={`offcanvas-menu ${showOffcanvas ? "active" : ""}`}>

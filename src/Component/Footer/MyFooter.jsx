@@ -1,7 +1,6 @@
 import React from "react";
 import "./MyFooter.css";
 import FootLogo from "../../assets/images/logo/logo-full1.webp";
-import { FaGithub, FaLinkedin, FaWhatsapp, FaEnvelope } from "react-icons/fa";
 
 function MyFooter() {
   return (
@@ -17,41 +16,8 @@ function MyFooter() {
           </a>
           <div className="footer-brand-text">
             <span className="footer-dev-name">Ahmed Mohamed Ghallab</span>
-            <span className="footer-dev-role">Front-End Developer (React.js / Next.js)</span>
+            <span className="footer-dev-role">Front-End Developer</span>
           </div>
-        </div>
-
-        <div className="footer-social-links">
-          <a
-            href="https://github.com/Ahmed-Ghallab"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="GitHub"
-          >
-            <FaGithub />
-          </a>
-          <a
-            href="https://linkedin.com/in/ahmedghallab22"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="LinkedIn"
-          >
-            <FaLinkedin />
-          </a>
-          <a
-            href="https://wa.me/201279547848"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="WhatsApp"
-          >
-            <FaWhatsapp />
-          </a>
-          <a
-            href="mailto:eng.ahmedghallab@gmail.com"
-            aria-label="Email"
-          >
-            <FaEnvelope />
-          </a>
         </div>
 
         <div className="footer-bottom-copy">

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./App.css";
 import MyAbout from "./Component/About/MyAbout";
 import MyExperience from "./Component/Experience/MyExperience";
@@ -10,7 +10,6 @@ import MyResume from "./Component/Resume/MyResume";
 import MyFooter from "./Component/Footer/MyFooter";
 import ScrollToTopButton from "./Component/ScrollToTop/ScrollToTopButton";
 import CustomCursor from "./Component/CustomCursor/CustomCursor";
-import Scrollbar from "./Component/customScrollbar/Scrollbar";
 import SocialBar from "./Component/SocialBar/SocialBar";
 import ContactForm from "./Component/ContactForm/ContactForm";
 
@@ -23,7 +22,6 @@ function App() {
     <>
       <CustomCursor />
       <SocialBar />
-      <Scrollbar />
       <MyHeader />
       <MyNavbar />
       <main>

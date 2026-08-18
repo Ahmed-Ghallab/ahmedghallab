@@ -135,9 +135,6 @@ function ContactForm() {
       <div className="contact-wrapper">
         <div className="form-header-area">
           <h3 className="form-title">Send a Direct Message</h3>
-          <p className="form-intro-note">
-            Your message is delivered straight to my personal inbox (<strong>eng.ahmedghallab@gmail.com</strong>).
-          </p>
         </div>
 
         {status === "success" ? (
