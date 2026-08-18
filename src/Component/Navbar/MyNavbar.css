@@ -134,7 +134,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    padding: 0.75rem 1.25rem;
+    padding: 0.65rem 1.1rem;
     z-index: 1001;
     justify-content: space-between;
     align-items: center;
@@ -158,7 +158,7 @@
 }
 
 .nav-logo-mobile {
-    height: 32px;
+    height: 30px;
     width: auto;
 }
 
@@ -166,14 +166,14 @@
 .hamburger-btn {
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 12px;
-    width: 44px;
-    height: 44px;
+    border-radius: 10px;
+    width: 40px;
+    height: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 5px;
+    gap: 4px;
     cursor: pointer;
     padding: 0;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -185,20 +185,19 @@
 .hamburger-btn:active {
     background: rgba(0, 242, 96, 0.1);
     border-color: var(--primary);
-    box-shadow: 0 0 15px rgba(0, 242, 96, 0.3);
 }
 
 .hamburger-line {
-    width: 20px;
+    width: 18px;
     height: 2px;
     background-color: var(--text-highlight);
     border-radius: 4px;
-    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     transform-origin: center;
 }
 
 .hamburger-btn.open .line-1 {
-    transform: translateY(7px) rotate(45deg);
+    transform: translateY(6px) rotate(45deg);
     background-color: var(--primary);
 }
 
@@ -208,11 +207,11 @@
 }
 
 .hamburger-btn.open .line-3 {
-    transform: translateY(-7px) rotate(-45deg);
+    transform: translateY(-6px) rotate(-45deg);
     background-color: var(--primary);
 }
 
-/* --- Offcanvas Mobile Drawer --- */
+/* --- Compact Offcanvas Mobile Drawer --- */
 .offcanvas-menu {
     position: fixed;
     inset: 0;
@@ -222,7 +221,7 @@
     z-index: 2000;
     visibility: hidden;
     opacity: 0;
-    transition: opacity 0.35s ease, visibility 0.35s ease;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
     pointer-events: none;
 }
 
@@ -235,27 +234,27 @@
 .offcanvas-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    transition: opacity 0.35s ease;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: opacity 0.3s ease;
 }
 
 .offcanvas-content {
     position: absolute;
     top: 0;
     right: 0;
-    width: min(340px, 88vw);
+    width: min(280px, 78vw);
     height: 100%;
-    background: #070d1a;
-    border-left: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 1.8rem 1.5rem;
+    background: #080e1a;
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 1.3rem 1.15rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     transform: translate3d(100%, 0, 0);
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: -15px 0 40px rgba(0, 0, 0, 0.8);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: -10px 0 35px rgba(0, 0, 0, 0.7);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     z-index: 2001;
@@ -270,12 +269,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 1.2rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .offcanvas-brand-name {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     font-weight: 700;
     color: var(--text-highlight);
     font-family: var(--font-heading);
@@ -284,19 +283,19 @@
 .offcanvas-status {
     display: flex;
     align-items: center;
-    gap: 0.45rem;
-    font-size: 0.75rem;
+    gap: 0.4rem;
+    font-size: 0.72rem;
     color: var(--primary);
     font-family: var(--font-code);
-    margin-top: 0.2rem;
+    margin-top: 0.15rem;
 }
 
 .status-ping {
-    width: 7px;
-    height: 7px;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
     background: var(--primary);
-    box-shadow: 0 0 8px var(--primary);
+    box-shadow: 0 0 6px var(--primary);
     animation: status-pulse 2s infinite;
 }
 
@@ -306,104 +305,124 @@
 }
 
 .close-drawer-btn {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     color: var(--text-muted);
-    font-size: 1rem;
-    width: 36px;
-    height: 36px;
+    font-size: 0.85rem;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.25s ease;
+    transition: all 0.2s ease;
 }
 
 .close-drawer-btn:hover {
     background: rgba(239, 68, 68, 0.15);
     border-color: rgba(239, 68, 68, 0.4);
     color: #ef4444;
-    transform: rotate(90deg);
 }
 
 /* --- Drawer Nav Links --- */
 .offcanvas-links {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    margin: 1.5rem 0;
+    gap: 0.35rem;
+    margin: 1rem 0;
 }
 
 .offcanvas-link {
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(255, 255, 255, 0.015);
     border: 1px solid transparent;
-    border-radius: 10px;
+    border-radius: 8px;
     text-align: left;
     font-family: var(--font-heading);
-    font-size: 1rem;
+    font-size: 0.92rem;
     font-weight: 500;
-    color: var(--text-main);
+    color: var(--text-muted);
     display: flex;
     align-items: center;
-    padding: 0.75rem 0.9rem;
+    padding: 0.55rem 0.75rem;
     cursor: pointer;
-    transition: all 0.25s ease;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
     width: 100%;
 }
 
 .offcanvas-num {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-family: var(--font-code);
-    color: var(--primary);
-    margin-right: 0.75rem;
-    opacity: 0.8;
+    color: var(--text-muted);
+    margin-right: 0.65rem;
+    opacity: 0.6;
 }
 
 .offcanvas-link-icon {
-    font-size: 1.05rem;
+    font-size: 0.95rem;
     color: var(--text-muted);
-    margin-right: 0.75rem;
+    margin-right: 0.65rem;
     display: flex;
     align-items: center;
-    transition: color 0.25s ease;
+    transition: color 0.2s ease;
 }
 
 .offcanvas-label {
     flex-grow: 1;
-    color: var(--text-highlight);
+    color: var(--text-main);
+    transition: color 0.2s ease;
 }
 
 .offcanvas-arrow {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    opacity: 0;
-    transform: translateX(-5px);
-    transition: all 0.25s ease;
+    font-size: 0.85rem;
+    color: var(--primary);
+    margin-left: auto;
 }
 
-.offcanvas-link:hover,
+/* ONLY the true active item gets styled active */
 .offcanvas-link.active {
     background: rgba(0, 242, 96, 0.08);
-    border-color: rgba(0, 242, 96, 0.25);
-    transform: translateX(4px);
+    border-color: rgba(0, 242, 96, 0.3);
+    color: var(--primary);
 }
 
-.offcanvas-link:hover .offcanvas-link-icon,
+.offcanvas-link.active .offcanvas-num {
+    color: var(--primary);
+    opacity: 1;
+}
+
 .offcanvas-link.active .offcanvas-link-icon {
     color: var(--primary);
 }
 
-.offcanvas-link:hover .offcanvas-arrow,
-.offcanvas-link.active .offcanvas-arrow {
-    opacity: 1;
-    color: var(--primary);
-    transform: translateX(0);
+.offcanvas-link.active .offcanvas-label {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Hover only on devices that support true pointer hovering */
+@media (hover: hover) and (pointer: fine) {
+    .offcanvas-link:hover:not(.active) {
+        background: rgba(255, 255, 255, 0.04);
+        border-color: rgba(255, 255, 255, 0.1);
+        color: var(--text-highlight);
+        transform: translateX(3px);
+    }
+    .offcanvas-link:hover:not(.active) .offcanvas-label {
+        color: var(--text-highlight);
+    }
+    .offcanvas-link:hover:not(.active) .offcanvas-link-icon {
+        color: var(--text-highlight);
+    }
+}
+
+.offcanvas-link:active {
+    transform: scale(0.98);
 }
 
 /* --- Drawer Action CTA --- */
 .offcanvas-cta-wrap {
-    margin: 0.5rem 0 1.5rem;
+    margin: 0.4rem 0 1rem;
 }
 
 .offcanvas-talk-btn {
@@ -413,67 +432,66 @@
     border: none;
     font-family: var(--font-heading);
     font-weight: 700;
-    font-size: 0.92rem;
-    padding: 0.8rem;
-    border-radius: 50px;
+    font-size: 0.85rem;
+    padding: 0.65rem 1rem;
+    border-radius: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
-    box-shadow: 0 4px 15px rgba(0, 242, 96, 0.3);
+    gap: 0.45rem;
+    box-shadow: 0 4px 15px rgba(0, 242, 96, 0.25);
     cursor: pointer;
-    transition: all 0.25s ease;
+    transition: all 0.2s ease;
 }
 
-.offcanvas-talk-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 242, 96, 0.5);
+.offcanvas-talk-btn:active {
+    transform: scale(0.97);
 }
 
 /* --- Drawer Footer & Socials --- */
 .offcanvas-footer {
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    padding-top: 1.2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: 0.9rem;
     display: flex;
     flex-direction: column;
-    gap: 0.9rem;
+    gap: 0.65rem;
     align-items: center;
 }
 
 .offcanvas-social-row {
     display: flex;
     justify-content: center;
-    gap: 0.8rem;
+    gap: 0.6rem;
     width: 100%;
 }
 
 .offcanvas-social-icon {
-    width: 38px;
-    height: 38px;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-muted);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1rem;
-    transition: all 0.25s ease;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
 }
 
 .offcanvas-social-icon:hover {
     background: var(--primary);
     border-color: var(--primary);
     color: #000;
-    transform: translateY(-3px);
-    box-shadow: 0 0 15px rgba(0, 242, 96, 0.5);
+    transform: translateY(-2px);
 }
 
 .offcanvas-location {
     font-size: 0.72rem;
     color: var(--text-muted);
-    font-family: var(--font-code);
+    font-family: var(--font-heading);
     text-align: center;
+    letter-spacing: 0.3px;
 }
 
 /* --- Responsive Trigger --- */

@@ -53,19 +53,23 @@ function MyNavbar() {
           setScrolled(window.scrollY > 20);
 
           const sections = document.querySelectorAll("main section");
+          const scrollPos = window.scrollY + window.innerHeight * 0.35;
           let current = "";
 
           sections.forEach((section) => {
-            const sectionTop = section.offsetTop - 140;
-            if (
-              window.scrollY >= sectionTop &&
-              window.scrollY < sectionTop + section.offsetHeight
-            ) {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
               current = section.getAttribute("id");
             }
           });
 
-          if (current) setActiveSection(current);
+          if (current) {
+            setActiveSection(current);
+          } else if (window.scrollY < 250) {
+            setActiveSection("about");
+          }
+
           ticking = false;
         });
         ticking = true;
@@ -91,6 +95,7 @@ function MyNavbar() {
   }, []);
 
   const handleNavClick = (id) => {
+    setActiveSection(id);
     scrollToSection(id);
     setShowOffcanvas(false);
   };
@@ -190,7 +195,7 @@ function MyNavbar() {
           onClick={() => setShowOffcanvas(false)}
         ></div>
 
-        {/* Drawer Content */}
+        {/* Compact Drawer Content */}
         <div className="offcanvas-content">
           {/* Drawer Header */}
           <div className="offcanvas-header">
@@ -223,7 +228,9 @@ function MyNavbar() {
                 <span className="offcanvas-num">{num}</span>
                 <span className="offcanvas-link-icon">{icon}</span>
                 <span className="offcanvas-label">{label}</span>
-                <span className="offcanvas-arrow">→</span>
+                {activeSection === id && (
+                  <span className="offcanvas-arrow">→</span>
+                )}
               </button>
             ))}
           </div>
@@ -238,7 +245,7 @@ function MyNavbar() {
             </button>
           </div>
 
-          {/* Social Links in Mobile Menu */}
+          {/* Social Links & Location in Mobile Menu */}
           <div className="offcanvas-footer">
             <div className="offcanvas-social-row">
               {socialLinks.map((social, index) => (
@@ -255,7 +262,7 @@ function MyNavbar() {
               ))}
             </div>
             <div className="offcanvas-location">
-              Alexandria, Egypt 🇪🇬 • UTC+3
+              Alexandria, Egypt 🇪🇬
             </div>
           </div>
         </div>
