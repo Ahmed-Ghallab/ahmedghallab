@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import "./ContactForm.css";
 import {
-  FaGithub,
   FaLinkedin,
   FaPhoneAlt,
-  FaMapMarkerAlt,
   FaPaperPlane,
-  FaWhatsapp,
   FaCheckCircle,
 } from "react-icons/fa";
 import { IoMail } from "react-icons/io5";
@@ -37,6 +34,7 @@ function ContactForm() {
     }, 400);
   };
 
+  // 3 Primary Direct Contact Channels
   const directContacts = [
     {
       icon: <IoMail />,
@@ -56,12 +54,6 @@ function ContactForm() {
       value: "ahmedghallab22",
       link: "https://www.linkedin.com/in/ahmedghallab22/",
     },
-    {
-      icon: <FaMapMarkerAlt />,
-      title: "Location",
-      value: "Alexandria, Egypt (Remote / UAE / On-site)",
-      link: null,
-    },
   ];
 
   return (
@@ -71,22 +63,22 @@ function ContactForm() {
         Have an opportunity, project, or question? Feel free to reach out directly or send a message.
       </p>
 
-      {/* Direct Contact Cards */}
+      {/* 3 Direct Contact Cards in 1 Row */}
       <div className="contact-cards-grid">
         {directContacts.map((c, i) => (
-          <div key={i} className="contact-quick-card">
+          <a
+            key={i}
+            href={c.link}
+            target="_blank"
+            rel="noreferrer"
+            className="contact-quick-card"
+          >
             <div className="contact-card-icon">{c.icon}</div>
             <div className="contact-card-details">
               <h4>{c.title}</h4>
-              {c.link ? (
-                <a href={c.link} target="_blank" rel="noreferrer">
-                  {c.value}
-                </a>
-              ) : (
-                <p>{c.value}</p>
-              )}
+              <p>{c.value}</p>
             </div>
-          </div>
+          </a>
         ))}
       </div>
 

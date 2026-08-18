@@ -9,6 +9,8 @@ import {
   FaCheckCircle,
   FaExternalLinkAlt,
   FaLaptopCode,
+  FaAward,
+  FaUniversity,
 } from "react-icons/fa";
 import { SiReact, SiNextdotjs, SiTailwindcss, SiTypescript } from "react-icons/si";
 
@@ -76,60 +78,74 @@ const experiencesData = [
   },
 ];
 
-const educationAndCertificates = [
-  {
-    id: "bsc",
-    title: "Bachelor of Computer Science & Information Technology",
-    issuer: "Modern Academy for Computer Science, Egypt",
-    period: "2018 – 2022",
-    type: "education",
-    details:
-      "Comprehensive Computer Science degree with focus on Software Engineering, Object-Oriented Programming (OOP), Data Structures, Algorithms, Database Systems, and Web Technologies.",
-  },
+const academicDegree = {
+  degree: "Bachelor of Computer Science & Information Technology",
+  institution: "Modern Academy for Computer Science & Management Technology",
+  period: "2018 – 2022",
+  location: "Cairo, Egypt",
+  badge: "Accredited 4-Year University Degree",
+  description:
+    "Comprehensive Computer Science curriculum providing a strong theoretical foundation in Software Engineering principles, computational problem solving, data modeling, and modern web architectures.",
+  coreCompetencies: [
+    "Object-Oriented Programming (OOP)",
+    "Data Structures & Algorithms",
+    "Database Management (SQL)",
+    "Software Engineering & System Analysis",
+    "Web Development Fundamentals",
+    "Operating Systems & Networking",
+  ],
+};
+
+const professionalCertifications = [
   {
     id: "eraasoft",
-    title: "Front-End Developer Diploma (5 Months)",
+    title: "Front-End Developer Diploma",
     issuer: "EraaSoft Academy",
+    badge: "5 Months Immersion",
     period: "2025",
-    type: "cert",
-    details:
-      "Deep dive into advanced JavaScript (ES6+), React.js, component architecture, state management, API integration, and clean code practices.",
+    skills: ["Advanced JavaScript (ES6+)", "React.js", "State Architecture", "REST APIs", "Clean Code"],
+    description:
+      "Deep dive into advanced JavaScript patterns, React component architecture, custom hooks, asynchronous state management, API integrations, and industry best practices.",
   },
   {
     id: "sprints-ms",
-    title: "Web Development Summer Camp (40 Hours)",
-    issuer: "Sprints × Microsoft",
+    title: "Web Development Summer Camp",
+    issuer: "Sprints.ai × Microsoft",
+    badge: "40 Hours Project Lab",
     period: "2025",
-    type: "cert",
-    details:
-      "Practical project-based program building scalable web solutions with modern front-end frameworks and developer toolchains.",
+    skills: ["React.js", "Modern Toolchains", "Agile Sprints", "Cloud Deployment"],
+    description:
+      "Practical project-based engineering camp delivering production-ready web solutions with modern front-end frameworks and developer toolchains.",
   },
   {
     id: "mahara-tech",
-    title: "Front-End Developer Track (32 Hours)",
-    issuer: "Mahara-Tech / ITI (Information Technology Institute)",
+    title: "Front-End Specialist Track",
+    issuer: "Mahara-Tech / ITI (MCIT Egypt)",
+    badge: "Ministry of Communications & IT",
     period: "2025",
-    type: "cert",
-    details:
-      "Comprehensive training covering React.js, TypeScript, JavaScript (ES6+), HTML5 semantic architecture, and advanced CSS3.",
+    skills: ["React.js", "TypeScript", "HTML5 Semantics", "Modern CSS3", "Responsive UI"],
+    description:
+      "Rigorous technical training curriculum under Egypt's Information Technology Institute covering TypeScript, component scalability, and web standards.",
   },
   {
     id: "sprints-react",
-    title: "Front-End Web Development with React Framework",
+    title: "Front-End Web Development with React",
     issuer: "Sprints.ai",
+    badge: "Advanced React Track",
     period: "2025",
-    type: "cert",
-    details:
-      "Specialized coursework on state synchronization, custom hooks, component life cycles, and performance optimization.",
+    skills: ["React Lifecycle", "State Synchronization", "Performance Tuning", "Component Optimization"],
+    description:
+      "Specialized coursework focusing on state synchronization, memoization, lifecycle optimization, and scalable modular architecture.",
   },
   {
     id: "uiux-prog",
-    title: "UI/UX Design Program (In Progress)",
+    title: "UI/UX Design & Prototyping",
     issuer: "Sprints.ai",
+    badge: "Design Track",
     period: "2025 – Present",
-    type: "cert",
-    details:
-      "Mastering user research, wireframing, interactive prototyping, and design system creation in Figma and Adobe XD.",
+    skills: ["User Research", "Wireframing", "Interactive Prototyping", "Figma Design Systems"],
+    description:
+      "Mastering user-centered design, usability testing, wireframing, high-fidelity design systems, and developer-to-designer handoff in Figma.",
   },
 ];
 
@@ -228,26 +244,74 @@ function MyExperience() {
           </div>
         )}
 
-        {/* Education & Certifications Timeline */}
+        {/* High-End Education & Certifications */}
         {(activeTab === "all" || activeTab === "education") && (
           <div className="timeline-group">
             <h3 className="group-heading">
-              <FaGraduationCap className="heading-icon" /> Education & Certifications
+              <FaGraduationCap className="heading-icon" /> Academic Degree & Professional Diplomas
             </h3>
 
-            <div className="timeline-items education-grid">
-              {educationAndCertificates.map((item) => (
-                <div key={item.id} className="education-card">
-                  <div className="edu-header">
-                    <span className="edu-badge-icon">
-                      {item.type === "education" ? <FaGraduationCap /> : <FaCertificate />}
+            {/* Featured Academic Degree Card */}
+            <div className="degree-showcase-card">
+              <div className="degree-header">
+                <div className="degree-icon-badge">
+                  <FaUniversity />
+                </div>
+                <div className="degree-title-wrap">
+                  <div className="degree-badge-pill">{academicDegree.badge}</div>
+                  <h4 className="degree-title">{academicDegree.degree}</h4>
+                  <h5 className="degree-institution">{academicDegree.institution}</h5>
+                </div>
+                <div className="degree-meta">
+                  <span className="degree-period"><FaCalendarAlt /> {academicDegree.period}</span>
+                  <span className="degree-loc"><FaMapMarkerAlt /> {academicDegree.location}</span>
+                </div>
+              </div>
+
+              <p className="degree-desc">{academicDegree.description}</p>
+
+              <div className="degree-competencies">
+                <span className="competency-label">Key Core CS Modules:</span>
+                <div className="competency-tags">
+                  {academicDegree.coreCompetencies.map((comp, idx) => (
+                    <span key={idx} className="competency-pill">
+                      ✓ {comp}
                     </span>
-                    <span className="edu-period">{item.period}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Diplomas & Certifications Grid */}
+            <h4 className="subgroup-heading">
+              <FaAward className="subheading-icon" /> Professional Certifications & Diplomas
+            </h4>
+
+            <div className="certifications-grid">
+              {professionalCertifications.map((cert) => (
+                <div key={cert.id} className="cert-card">
+                  <div className="cert-card-header">
+                    <div className="cert-badge-wrapper">
+                      <span className="cert-badge-tag">{cert.badge}</span>
+                      <span className="cert-year">{cert.period}</span>
+                    </div>
                   </div>
 
-                  <h4 className="edu-title">{item.title}</h4>
-                  <h5 className="edu-issuer">{item.issuer}</h5>
-                  <p className="edu-details">{item.details}</p>
+                  <h5 className="cert-title">{cert.title}</h5>
+                  <div className="cert-issuer">
+                    <FaCertificate className="cert-issuer-icon" />
+                    <span>{cert.issuer}</span>
+                  </div>
+
+                  <p className="cert-desc">{cert.description}</p>
+
+                  <div className="cert-skills-wrap">
+                    {cert.skills.map((s, i) => (
+                      <span key={i} className="cert-skill-pill">
+                        {s}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>

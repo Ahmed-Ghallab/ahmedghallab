@@ -200,13 +200,52 @@
     border-color: rgba(0, 229, 255, 0.25);
 }
 
-/* --- Mobile Responsiveness --- */
+/* --- Mobile Responsiveness & Compact Heights --- */
 @media (max-width: 768px) {
+    .skills-section {
+        margin-bottom: 3.5rem;
+    }
+    .skills-subtitle {
+        margin: -2rem auto 2rem;
+        font-size: 0.95rem;
+    }
+    .skill-filters {
+        gap: 0.4rem;
+        margin-bottom: 2rem;
+    }
+    .filter-btn {
+        padding: 0.35rem 0.85rem;
+        font-size: 0.78rem;
+    }
     .skills-domain-grid {
         grid-template-columns: 1fr;
-        gap: 1.2rem;
+        gap: 1rem;
     }
     .domain-card {
-        padding: 1.2rem 1rem;
+        padding: 1.1rem 0.95rem;
+        gap: 0.8rem;
+        border-radius: 12px;
+    }
+    .domain-header {
+        padding-bottom: 0.65rem;
+    }
+    .domain-icon-box {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+    }
+    .domain-title {
+        font-size: 0.95rem;
+    }
+    .skill-chip {
+        padding: 0.25rem 0.55rem;
+        gap: 0.35rem;
+        border-radius: 6px;
+    }
+    .chip-name {
+        font-size: 0.76rem;
+    }
+    .chip-icon {
+        font-size: 0.85rem;
     }
 }

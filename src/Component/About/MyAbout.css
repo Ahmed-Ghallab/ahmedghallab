@@ -152,12 +152,13 @@
     font-weight: 600;
 }
 
-/* --- Responsive Layout --- */
+/* --- Responsive Layout & Compact Mobile --- */
 @media (max-width: 900px) {
     .about-wrapper {
         grid-template-columns: 1fr;
-        gap: 2.5rem;
+        gap: 1.8rem;
         text-align: left;
+        padding: 1rem 0;
     }
     
     .about-image {
@@ -165,19 +166,54 @@
     }
 
     .image-frame {
-        max-width: 280px;
+        max-width: 240px;
     }
 
     .about-quick-info {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.6rem;
+        margin: 1.2rem 0;
+    }
+
+    .info-item {
+        padding: 0.55rem 0.7rem;
+        gap: 0.5rem;
+    }
+
+    .info-icon {
+        font-size: 1.1rem;
+    }
+
+    .info-item strong {
+        font-size: 0.76rem;
+    }
+
+    .info-item span {
+        font-size: 0.72rem;
+    }
+
+    .about-badges {
+        margin-top: 1rem;
+        gap: 0.4rem;
+    }
+
+    .about-badges span {
+        padding: 0.35rem 0.65rem;
+        font-size: 0.75rem;
     }
 }
 
 @media (max-width: 480px) {
     .image-frame {
-        max-width: 220px;
+        max-width: 190px;
     }
     #about-text p {
         padding-left: 0.75rem;
+        margin-bottom: 0.9rem;
+        font-size: 0.92rem;
+    }
+    .about-quick-info {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.45rem;
     }
 }

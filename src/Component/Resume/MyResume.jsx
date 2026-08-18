@@ -5,11 +5,9 @@ import {
   FaDownload,
   FaEye,
   FaFileAlt,
-  FaCheckCircle,
   FaGraduationCap,
   FaBriefcase,
   FaCode,
-  FaLanguage,
 } from "react-icons/fa";
 
 function MyResume() {
@@ -30,7 +28,7 @@ function MyResume() {
             <h3 className="holo-title">Ahmed Mohamed Ghallab</h3>
             <p className="holo-role-tag">Front-End Developer (React.js / Next.js)</p>
 
-            {/* Quick CV Highlight Grid */}
+            {/* 3 Quick Highlight Cards in 1 Row */}
             <div className="resume-meta-grid">
               <div className="meta-card">
                 <FaBriefcase className="meta-icon" />
@@ -51,13 +49,6 @@ function MyResume() {
                 <div>
                   <strong>Core Stack</strong>
                   <span>React, Next.js, TS, Tailwind</span>
-                </div>
-              </div>
-              <div className="meta-card">
-                <FaLanguage className="meta-icon" />
-                <div>
-                  <strong>Languages</strong>
-                  <span>Arabic (Native), English (Proficient)</span>
                 </div>
               </div>
             </div>
