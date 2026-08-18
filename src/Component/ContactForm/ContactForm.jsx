@@ -184,10 +184,12 @@ function ContactForm() {
 
             <div className="form-row-2col">
               <div className="form-group">
-                <label>Full Name *</label>
+                <label htmlFor="contact-fullName">Full Name *</label>
                 <input
+                  id="contact-fullName"
                   type="text"
                   name="fullName"
+                  autoComplete="name"
                   placeholder="e.g. John Doe"
                   value={formData.fullName}
                   onChange={handleChange}
@@ -197,10 +199,12 @@ function ContactForm() {
               </div>
 
               <div className="form-group">
-                <label>Email Address *</label>
+                <label htmlFor="contact-email">Email Address *</label>
                 <input
+                  id="contact-email"
                   type="email"
                   name="email"
+                  autoComplete="email"
                   placeholder="example@company.com"
                   value={formData.email}
                   onChange={handleChange}
@@ -211,10 +215,12 @@ function ContactForm() {
             </div>
 
             <div className="form-group">
-              <label>Phone / WhatsApp (Optional)</label>
+              <label htmlFor="contact-phone">Phone / WhatsApp (Optional)</label>
               <input
+                id="contact-phone"
                 type="tel"
                 name="phone"
+                autoComplete="tel"
                 placeholder="+20 127 954 7848"
                 value={formData.phone}
                 onChange={handleChange}
@@ -223,8 +229,9 @@ function ContactForm() {
             </div>
 
             <div className="form-group">
-              <label>Message *</label>
+              <label htmlFor="contact-message">Message *</label>
               <textarea
+                id="contact-message"
                 name="message"
                 rows="4"
                 placeholder="Tell me about your project, team opportunity, or timeline..."

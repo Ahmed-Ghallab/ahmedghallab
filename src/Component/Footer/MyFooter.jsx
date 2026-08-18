@@ -6,13 +6,13 @@ function MyFooter() {
   return (
     <footer className="my-footer">
       <div className="footer-bg-watermark">
-        <img src={FootLogo} alt="" aria-hidden="true" />
+        <img src={FootLogo} alt="" aria-hidden="true" loading="lazy" decoding="async" width="500" height="200" />
       </div>
 
       <div className="footer-container">
         <div className="footer-brand-row">
           <a href="#home" className="footer-logo-link" title="Ahmed Ghallab Home">
-            <img src={FootLogo} alt="Ahmed Ghallab" className="footer-logo-img" />
+            <img src={FootLogo} alt="Ahmed Ghallab Logo" className="footer-logo-img" loading="lazy" decoding="async" width="160" height="42" />
           </a>
           <div className="footer-brand-text">
             <span className="footer-dev-name">Ahmed Mohamed Ghallab</span>

@@ -142,7 +142,7 @@ function MyNavbar() {
             className="nav-logo-wrapper"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
-            <img src={LogoFull} alt="Ahmed Ghallab" className="nav-logo" />
+            <img src={LogoFull} alt="Ahmed Ghallab Logo" className="nav-logo" width="140" height="38" decoding="async" />
           </div>
 
           <div className="nav-links">
@@ -173,7 +173,7 @@ function MyNavbar() {
           className="nav-logo-wrapper-mobile"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >
-          <img src={LogoFull} alt="Ahmed Ghallab" className="nav-logo-mobile" />
+          <img src={LogoFull} alt="Ahmed Ghallab Logo" className="nav-logo-mobile" width="110" height="30" decoding="async" />
         </div>
 
         <button

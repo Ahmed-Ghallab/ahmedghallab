@@ -14,6 +14,8 @@
   opacity: 0.15;
   filter: drop-shadow(0 0 5px currentColor);
   animation: floatPath linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 @keyframes floatPath {
