@@ -7,7 +7,6 @@ import {
   FaBootstrap,
   FaJs,
   FaReact,
-  FaGitAlt,
   FaGithub,
   FaFigma,
   FaComments,
@@ -95,11 +94,12 @@ const skillCategories = [
   },
   {
     id: "tools",
-    title: "Tooling & Agile Workflow",
+    title: "Tooling, OOP & Workflow",
     icon: <FaTools />,
     accent: "amber",
     skills: [
       { name: "Git & GitHub", level: "Advanced", icon: <FaGithub /> },
+      { name: "OOP & Data Structures", level: "Advanced", icon: <FaCode /> },
       { name: "Jira (Agile/Scrum)", level: "Advanced", icon: <SiJira /> },
       { name: "Figma", level: "Intermediate", icon: <FaFigma /> },
       { name: "Adobe XD", level: "Intermediate", icon: <SiAdobexd /> },
@@ -114,20 +114,20 @@ const skillCategories = [
     skills: [
       { name: "Problem Solving", level: "Advanced", icon: <FaBrain /> },
       { name: "Agile Communication", level: "Advanced", icon: <FaComments /> },
-      { name: "Teamwork & Mentorship", level: "Advanced", icon: <FaUsers /> },
+      { name: "Teamwork & Code Quality", level: "Advanced", icon: <FaUsers /> },
       { name: "Sprint Delivery", level: "Advanced", icon: <FaClock /> },
     ],
   },
 ];
 
 const categoryFilters = [
-  { id: "all", label: "All Tech Stacks (29)" },
+  { id: "all", label: "All Tech Stacks (30)" },
   { id: "frontend", label: "Frontend Core" },
   { id: "state", label: "State & Data" },
   { id: "ui", label: "UI & Styling" },
   { id: "backend", label: "Cloud & Backend" },
-  { id: "tools", label: "Tools & Agile" },
-  { id: "soft", label: "Soft Skills" },
+  { id: "tools", label: "Tools & OOP" },
+  { id: "soft", label: "Engineering Strengths" },
 ];
 
 function MySkills() {

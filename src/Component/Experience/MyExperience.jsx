@@ -8,84 +8,90 @@ import {
   FaMapMarkerAlt,
   FaCheckCircle,
   FaExternalLinkAlt,
+  FaGithub,
   FaLaptopCode,
   FaAward,
   FaUniversity,
+  FaArrowRight,
 } from "react-icons/fa";
-import { SiReact, SiNextdotjs, SiTailwindcss, SiTypescript } from "react-icons/si";
 
 const experiencesData = [
   {
+    step: "01",
     id: "enaya",
     role: "Front-End Developer",
     company: "Enaya E-Commerce Platform",
     location: "Remote | Freelance / Project-Based",
-    period: "Dec 2025 – Present",
-    type: "work",
+    period: "Jan 2026 – Present",
+    statusBadge: "Active Role",
     featured: true,
     tags: ["React.js", "Tailwind CSS", "Zustand", "Axios", "REST APIs", "AI Skin Analysis"],
     bullets: [
-      "Developed and maintained a full-featured e-commerce platform and dynamic administrative dashboard for managing products, categories, and content.",
-      "Engineered dynamic homepage sections and hero carousel configurations controlled through the administration system.",
-      "Integrated an AI-powered skin analysis module providing instant tailored skin-care recommendations based on user inputs.",
-      "Built resilient client-side state management with Zustand, handling persistent carts, filters, and checkout flows.",
+      "Developed a full-featured e-commerce platform using React.js, Tailwind CSS, Zustand, Axios, and REST APIs, covering product discovery, cart, checkout, authentication, and customer workflows.",
+      "Developed a dynamic admin dashboard for managing products and website content, including dynamic homepage and hero sections.",
+      "Integrated an AI-powered skin analysis feature for analyzing user-submitted images and generating personalized results.",
+      "Implemented responsive layouts, dynamic data rendering, state management, and persistent application data.",
     ],
-    link: "https://www.enayak.com/",
+    liveLink: "https://www.enayak.com/",
+    githubLink: "https://github.com/Ahmed-Ghallab/enaya",
   },
   {
+    step: "02",
     id: "fassla",
     role: "Front-End Developer",
     company: "Fassla Software",
     location: "Cairo, Egypt",
-    period: "Feb 2025 – Dec 2025",
-    type: "work",
+    period: "Feb 2025 – Jan 2026",
+    statusBadge: "1 Year",
     featured: false,
-    tags: ["React.js", "JavaScript (ES6+)", "HTML5/CSS3", "UI/UX", "Git"],
+    tags: ["React.js", "JavaScript (ES6+)", "HTML5/CSS3", "UI/UX", "Git / GitHub"],
     bullets: [
-      "Translated Figma/Adobe XD designs into pixel-perfect, reusable, and maintainable React front-end components.",
-      "Implemented responsive layouts and ensured cross-browser compatibility across desktop, tablet, and mobile viewports.",
-      "Collaborated within cross-functional agile teams to deliver features, optimize loading speeds, and resolve UI bottlenecks.",
+      "Developed responsive web interfaces using HTML5, CSS3, JavaScript, and React.js.",
+      "Translated UI/UX designs into reusable React components and responsive layouts.",
+      "Collaborated with team members to implement features, improve existing workflows, and resolve front-end issues.",
+      "Used Git/GitHub and component-based development practices to maintain clean and scalable code.",
     ],
   },
   {
+    step: "03",
     id: "sprints",
-    role: "Trainee Front-End Developer",
-    company: "Sprints.ai",
+    role: "Trainee Frontend Developer",
+    company: "Sprints.ai (React & Next.js Track)",
     location: "Cairo, Egypt",
-    period: "Apr 2025 – Oct 2025",
-    type: "work",
+    period: "Oct 2024 – Jan 2025",
+    statusBadge: "Intensive",
     featured: false,
-    tags: ["React.js", "Next.js", "Tailwind CSS", "Vite", "REST APIs", "Figma"],
+    tags: ["React.js", "Next.js", "Tailwind CSS", "REST APIs", "State Management"],
     bullets: [
-      "Completed intensive hands-on frontend track focusing on modern React.js and Next.js production patterns.",
-      "Engineered end-to-end web applications with API integrations, asynchronous state management, and responsive styling.",
-      "Collaborated in sprint reviews and code audits using Git, GitHub, and agile project management tools.",
+      "Built web applications using React.js, Next.js, Tailwind CSS, API integration, and state management.",
+      "Applied responsive UI patterns, reusable components, and Git-based workflows.",
     ],
   },
   {
-    id: "teleperformance",
-    role: "Chat Support Specialist / SME",
-    company: "Teleperformance (Talabat)",
-    location: "Alexandria, Egypt",
-    period: "Dec 2023 – Feb 2025",
-    type: "work",
+    step: "04",
+    id: "refilex",
+    role: "Front-End Developer",
+    company: "Refilex Software",
+    location: "Cairo, Egypt",
+    period: "Jan 2024 – Sep 2024",
+    statusBadge: "9 Months",
     featured: false,
-    tags: ["Salesforce", "Odoo ERP", "Jira", "CRM Platforms", "SME Escalations"],
+    tags: ["React.js", "JavaScript (ES6+)", "HTML5", "CSS3", "Responsive UI"],
     bullets: [
-      "Delivered real-time operational and technical customer resolution for Talabat across Egypt & GCC regions.",
-      "Acted as a Subject Matter Expert (SME) mentoring team members, managing complex escalations, and analyzing system bottlenecks with enterprise tools.",
+      "Built responsive web interfaces using React.js, JavaScript, HTML5, and CSS3.",
+      "Developed reusable UI components and implemented responsive, user-focused designs.",
     ],
   },
 ];
 
 const academicDegree = {
-  degree: "Bachelor of Computer Science & Information Technology",
-  institution: "Modern Academy for Computer Science & Management Technology",
+  degree: "Bachelor’s Degree in Computer Science & Information Technology",
+  institution: "Modern Academy for Computer Science, Egypt",
   period: "2018 – 2022",
   location: "Cairo, Egypt",
   badge: "Accredited 4-Year University Degree",
   description:
-    "Comprehensive Computer Science curriculum providing a strong theoretical foundation in Software Engineering principles, computational problem solving, data modeling, and modern web architectures.",
+    "Comprehensive Computer Science curriculum providing a strong theoretical and practical foundation in Software Engineering principles, computational problem solving, data modeling, algorithms, and modern web architectures.",
   coreCompetencies: [
     "Object-Oriented Programming (OOP)",
     "Data Structures & Algorithms",
@@ -99,13 +105,13 @@ const academicDegree = {
 const professionalCertifications = [
   {
     id: "eraasoft",
-    title: "Front-End Developer Diploma",
+    title: "Front-End Diploma",
     issuer: "EraaSoft Academy",
     badge: "5 Months Immersion",
     period: "2025",
     skills: ["Advanced JavaScript (ES6+)", "React.js", "State Architecture", "REST APIs", "Clean Code"],
     description:
-      "Deep dive into advanced JavaScript patterns, React component architecture, custom hooks, asynchronous state management, API integrations, and industry best practices.",
+      "Deep dive into advanced JavaScript patterns, React component architecture, custom hooks, asynchronous state management, and industry-grade web development.",
   },
   {
     id: "sprints-ms",
@@ -119,19 +125,19 @@ const professionalCertifications = [
   },
   {
     id: "mahara-tech",
-    title: "Front-End Specialist Track",
+    title: "Front-End Track",
     issuer: "Mahara-Tech / ITI (MCIT Egypt)",
-    badge: "Ministry of Communications & IT",
+    badge: "32 Hours Specialized Track",
     period: "2025",
-    skills: ["React.js", "TypeScript", "HTML5 Semantics", "Modern CSS3", "Responsive UI"],
+    skills: ["React.js", "JavaScript & ES6+", "TypeScript", "HTML5 & CSS3"],
     description:
       "Rigorous technical training curriculum under Egypt's Information Technology Institute covering TypeScript, component scalability, and web standards.",
   },
   {
     id: "sprints-react",
-    title: "Front-End Web Development with React",
+    title: "Front-End Web Development with React Framework Course",
     issuer: "Sprints.ai",
-    badge: "Advanced React Track",
+    badge: "Advanced React Course",
     period: "2025",
     skills: ["React Lifecycle", "State Synchronization", "Performance Tuning", "Component Optimization"],
     description:
@@ -139,9 +145,9 @@ const professionalCertifications = [
   },
   {
     id: "uiux-prog",
-    title: "UI/UX Design & Prototyping",
+    title: "UI/UX Design Program",
     issuer: "Sprints.ai",
-    badge: "Design Track",
+    badge: "In Progress",
     period: "2025 – Present",
     skills: ["User Research", "Wireframing", "Interactive Prototyping", "Figma Design Systems"],
     description:
@@ -154,12 +160,12 @@ function MyExperience() {
 
   return (
     <section id="experience" className="experience-section">
-      <h2 className="section-title">Experience & Journey</h2>
+      <h2 className="section-title">Professional Experience & Journey</h2>
       <p className="experience-subtitle">
-        A timeline of my professional roles, engineering milestones, and computer science background.
+        A step-by-step timeline of my professional roles, engineering milestones, and computer science background.
       </p>
 
-      {/* Tab Buttons */}
+      {/* Tab Controls */}
       <div className="experience-tabs">
         <button
           className={`exp-tab-btn ${activeTab === "all" ? "active" : ""}`}
@@ -182,61 +188,90 @@ function MyExperience() {
       </div>
 
       <div className="experience-content-wrapper">
-        {/* Work Experience Timeline */}
+        {/* Step-by-Step Vertical Work Experience Timeline */}
         {(activeTab === "all" || activeTab === "work") && (
           <div className="timeline-group">
             <h3 className="group-heading">
-              <FaBriefcase className="heading-icon" /> Professional Experience
+              <FaBriefcase className="heading-icon" /> Work Experience Timeline
             </h3>
 
-            <div className="timeline-items">
-              {experiencesData.map((exp) => (
+            <div className="stepped-timeline">
+              {experiencesData.map((exp, index) => (
                 <div
                   key={exp.id}
-                  className={`timeline-card ${exp.featured ? "featured-card" : ""}`}
+                  className={`timeline-step-item ${exp.featured ? "featured-step" : ""}`}
                 >
-                  <div className="card-top-row">
-                    <div>
-                      <h4 className="card-role">{exp.role}</h4>
-                      <h5 className="card-company">
-                        {exp.company}
-                        {exp.link && (
-                          <a
-                            href={exp.link}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="company-live-link"
-                            title="Visit Live Site"
-                          >
-                            <FaExternalLinkAlt />
-                          </a>
-                        )}
-                      </h5>
+                  {/* Step Node Marker */}
+                  <div className="step-node-col">
+                    <div className="step-badge-circle">
+                      <span>{exp.step}</span>
                     </div>
-                    <div className="card-period-badge">
-                      <FaCalendarAlt /> {exp.period}
-                    </div>
+                    {index !== experiencesData.length - 1 && <div className="step-line"></div>}
                   </div>
 
-                  <p className="card-location">
-                    <FaMapMarkerAlt /> {exp.location}
-                  </p>
+                  {/* Step Content Card */}
+                  <div className="step-card">
+                    <div className="card-top-row">
+                      <div>
+                        <div className="card-role-wrap">
+                          <h4 className="card-role">{exp.role}</h4>
+                          <span className="card-status-pill">{exp.statusBadge}</span>
+                        </div>
 
-                  <ul className="card-bullets">
-                    {exp.bullets.map((b, i) => (
-                      <li key={i}>
-                        <FaCheckCircle className="bullet-icon" />
-                        <span>{b}</span>
-                      </li>
-                    ))}
-                  </ul>
+                        <h5 className="card-company">
+                          {exp.company}
+                          <div className="company-links">
+                            {exp.liveLink && (
+                              <a
+                                href={exp.liveLink}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="company-icon-link live"
+                                title="Visit Live Platform"
+                              >
+                                <FaExternalLinkAlt /> Live
+                              </a>
+                            )}
+                            {exp.githubLink && (
+                              <a
+                                href={exp.githubLink}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="company-icon-link github"
+                                title="View GitHub Code"
+                              >
+                                <FaGithub /> Code
+                              </a>
+                            )}
+                          </div>
+                        </h5>
+                      </div>
 
-                  <div className="card-tags">
-                    {exp.tags.map((t, i) => (
-                      <span key={i} className="tech-pill">
-                        {t}
-                      </span>
-                    ))}
+                      <div className="card-period-badge">
+                        <FaCalendarAlt /> {exp.period}
+                      </div>
+                    </div>
+
+                    <p className="card-location">
+                      <FaMapMarkerAlt /> {exp.location}
+                    </p>
+
+                    <ul className="card-bullets">
+                      {exp.bullets.map((b, i) => (
+                        <li key={i}>
+                          <FaCheckCircle className="bullet-icon" />
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="card-tags">
+                      {exp.tags.map((t, i) => (
+                        <span key={i} className="tech-pill">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               ))}
@@ -271,7 +306,7 @@ function MyExperience() {
               <p className="degree-desc">{academicDegree.description}</p>
 
               <div className="degree-competencies">
-                <span className="competency-label">Key Core CS Modules:</span>
+                <span className="competency-label">Core Computer Science Modules:</span>
                 <div className="competency-tags">
                   {academicDegree.coreCompetencies.map((comp, idx) => (
                     <span key={idx} className="competency-pill">
@@ -292,7 +327,9 @@ function MyExperience() {
                 <div key={cert.id} className="cert-card">
                   <div className="cert-card-header">
                     <div className="cert-badge-wrapper">
-                      <span className="cert-badge-tag">{cert.badge}</span>
+                      <span className={`cert-badge-tag ${cert.badge === "In Progress" ? "in-progress" : ""}`}>
+                        {cert.badge}
+                      </span>
                       <span className="cert-year">{cert.period}</span>
                     </div>
                   </div>
