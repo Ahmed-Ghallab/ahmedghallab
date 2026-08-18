@@ -6,6 +6,7 @@
     position: relative;
     padding: 2rem 0;
     width: 100%;
+    max-width: 100%;
 }
 
 /* --- Image Styling --- */
@@ -14,6 +15,7 @@
     display: flex;
     justify-content: center;
     width: 100%;
+    max-width: 100%;
 }
 
 .image-frame {
@@ -38,7 +40,7 @@
     border-radius: 12px;
     display: block;
     background: var(--bg-card);
-    filter: grayscale(15%) contrast(1.05);
+    filter: grayscale(10%) contrast(1.05);
     transition: all 0.3s ease;
     object-fit: cover;
 }
@@ -59,6 +61,7 @@
     opacity: 0.18;
     filter: blur(60px);
     z-index: 1;
+    pointer-events: none;
 }
 
 /* --- Text Styling --- */
@@ -66,14 +69,16 @@
     position: relative;
     z-index: 5;
     width: 100%;
+    max-width: 100%;
 }
 
 #about-text p {
-    font-size: clamp(0.95rem, 2vw, 1.05rem);
+    font-size: clamp(0.92rem, 1.8vw, 1.05rem);
     margin-bottom: 1.2rem;
     border-left: 2px solid var(--primary-dim);
     padding-left: 1rem;
     line-height: 1.7;
+    word-break: break-word;
 }
 
 .highlight {
@@ -84,9 +89,10 @@
 /* --- Quick Info Grid --- */
 .about-quick-info {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+    gap: 0.9rem;
     margin: 1.5rem 0;
+    width: 100%;
 }
 
 .info-item {
@@ -98,6 +104,7 @@
     padding: 0.8rem 1rem;
     border-radius: 10px;
     transition: transform 0.2s ease, border-color 0.2s ease;
+    min-width: 0;
 }
 
 .info-item:hover {
@@ -106,7 +113,7 @@
 }
 
 .info-icon {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
     color: var(--primary);
     flex-shrink: 0;
 }
@@ -116,19 +123,27 @@
     color: var(--text-highlight);
     font-size: 0.85rem;
     font-family: var(--font-heading);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .info-item span {
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
 }
 
 /* --- Badges --- */
 .about-badges {
     display: flex;
-    gap: 0.6rem;
+    gap: 0.55rem;
     margin-top: 1.5rem;
     flex-wrap: wrap;
+    width: 100%;
 }
 
 .about-badges span {
@@ -136,12 +151,12 @@
     border: 1px solid var(--primary-dim);
     color: var(--primary);
     border-radius: 6px;
-    padding: 0.45rem 0.85rem;
-    font-size: 0.82rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
     font-family: var(--font-code);
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.45rem;
     transition: all 0.25s ease;
 }
 
@@ -156,7 +171,7 @@
 @media (max-width: 900px) {
     .about-wrapper {
         grid-template-columns: 1fr;
-        gap: 1.8rem;
+        gap: 1.6rem;
         text-align: left;
         padding: 1rem 0;
     }
@@ -171,7 +186,7 @@
 
     .about-quick-info {
         grid-template-columns: repeat(2, 1fr);
-        gap: 0.6rem;
+        gap: 0.55rem;
         margin: 1.2rem 0;
     }
 
@@ -194,12 +209,12 @@
 
     .about-badges {
         margin-top: 1rem;
-        gap: 0.4rem;
+        gap: 0.35rem;
     }
 
     .about-badges span {
         padding: 0.35rem 0.65rem;
-        font-size: 0.75rem;
+        font-size: 0.74rem;
     }
 }
 
@@ -209,11 +224,11 @@
     }
     #about-text p {
         padding-left: 0.75rem;
-        margin-bottom: 0.9rem;
-        font-size: 0.92rem;
+        margin-bottom: 0.85rem;
+        font-size: 0.88rem;
     }
     .about-quick-info {
         grid-template-columns: 1fr 1fr;
-        gap: 0.45rem;
+        gap: 0.4rem;
     }
 }
