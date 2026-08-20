@@ -69,11 +69,14 @@ const FloatingIcons = () => {
 
   return (
     <div className="floating-icons-container">
-      {icons.map(({ id, Icon, color, style }) => (
-        <div key={id} className="floating-icon" style={{ ...style, color }}>
-          <Icon />
-        </div>
-      ))}
+      {icons.map((item) => {
+        const IconComponent = item.Icon;
+        return (
+          <div key={item.id} className="floating-icon" style={{ ...item.style, color: item.color }}>
+            <IconComponent />
+          </div>
+        );
+      })}
     </div>
   );
 };

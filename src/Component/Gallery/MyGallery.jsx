@@ -370,7 +370,7 @@
 
 // export default MyGallery;
 
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import "../../Component/Gallery/MyGallery.css";
 import AuthorPort1 from "../../assets/images/projectImage/AuthorPortfolio/home-page.webp";
 import Coffee2 from "../../assets/images/projectImage/CoffeeListing/CoffeeListing (2).webp";
@@ -387,6 +387,24 @@ import sociallinks1 from "../../assets/images/projectImage/social-links-profile-
 import testimonialsgrid1 from "../../assets/images/projectImage/testimonials-grid-section-main/testimonials-grid-section-main.webp";
 import TypeTestSpeed1 from "../../assets/images/projectImage/Type-Test-Speed/Type-Test-Speed.webp";
 import WeatherApp1 from "../../assets/images/projectImage/Weather-App/Weather-App.webp";
+
+const defaultImages = [
+  { src: AuthorPort1, alt: "Project 1 Image 1" },
+  { src: fourcardfeature1, alt: "Project 7 Image 1" },
+  { src: testimonialsgrid1, alt: "Project 13 Image 1" },
+  { src: qrcode1, alt: "Project 9 Image 1" },
+  { src: articlepreview1, alt: "Project 5 Image 1" },
+  { src: TypeTestSpeed1, alt: "Project 14 Image 1" },
+  { src: productpreview1, alt: "Project 8 Image 1" },
+  { src: recipepage1, alt: "Project 10 Image 1" },
+  { src: ToDoApp1, alt: "Project 3 Image 1" },
+  { src: blogpreview1, alt: "Project 6 Image 1" },
+  { src: WeatherApp1, alt: "Project 15 Image 1" },
+  { src: Coffee2, alt: "Project 2 Image 2" },
+  { src: trackingdash1, alt: "Project 4 Image 1" },
+  { src: simpleToDoApp1, alt: "Project 11 Image 1" },
+  { src: sociallinks1, alt: "Project 12 Image 1" },
+];
 
 function MyGallery({ images, resetGallery }) {
   const [displayImages, setDisplayImages] = useState([]);
@@ -422,24 +440,6 @@ function MyGallery({ images, resetGallery }) {
       if (zoomTimeout.current) clearTimeout(zoomTimeout.current);
     };
   }, [lightboxIndex]);
-
-  const defaultImages = [
-    { src: AuthorPort1, alt: "Project 1 Image 1" },
-    { src: fourcardfeature1, alt: "Project 7 Image 1" },
-    { src: testimonialsgrid1, alt: "Project 13 Image 1" },
-    { src: qrcode1, alt: "Project 9 Image 1" },
-    { src: articlepreview1, alt: "Project 5 Image 1" },
-    { src: TypeTestSpeed1, alt: "Project 14 Image 1" },
-    { src: productpreview1, alt: "Project 8 Image 1" },
-    { src: recipepage1, alt: "Project 10 Image 1" },
-    { src: ToDoApp1, alt: "Project 3 Image 1" },
-    { src: blogpreview1, alt: "Project 6 Image 1" },
-    { src: WeatherApp1, alt: "Project 15 Image 1" },
-    { src: Coffee2, alt: "Project 2 Image 2" },
-    { src: trackingdash1, alt: "Project 4 Image 1" },
-    { src: simpleToDoApp1, alt: "Project 11 Image 1" },
-    { src: sociallinks1, alt: "Project 12 Image 1" },
-  ];
 
   useEffect(() => {
     if (images && images.length > 0) {
@@ -515,54 +515,11 @@ function MyGallery({ images, resetGallery }) {
     clampOffset(offset, newZoom);
   };
 
-  // Mouse drag (desktop)
-  const handleMouseDown = (e) => {
-    e.preventDefault();
-    if (!isZoomed) return;
-    isDragging.current = true;
-    startPos.current = { x: e.clientX, y: e.clientY };
-  };
-
-  const handleMouseMove = (e) => {
-    if (!isDragging.current || !isZoomed) return;
-    const dx = (e.clientX - startPos.current.x) * DRAG_SPEED;
-    const dy = (e.clientY - startPos.current.y) * DRAG_SPEED;
-    startPos.current = { x: e.clientX, y: e.clientY };
-    setOffset((prev) => {
-      const next = { x: prev.x + dx, y: prev.y + dy };
-      return clampOffset(next, zoom);
-    });
-  };
-
-  const handleMouseUp = () => {
-    isDragging.current = false;
-  };
-
-  useEffect(() => {
-    // global listeners so mouseup outside image still stops dragging
-    window.addEventListener("mouseup", handleMouseUp);
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => {
-      window.removeEventListener("mouseup", handleMouseUp);
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, [isZoomed, zoom]);
-
-  // Wheel zoom desktop
-  const handleWheel = (e) => {
-    e.preventDefault();
-    const delta = e.deltaY < 0 ? 0.1 : -0.1;
-    const newZoom = Math.max(0.4, +(zoom + delta).toFixed(2));
-    setZoom(newZoom);
-    setIsZoomed(newZoom > 1);
-    clampOffset(offset, newZoom);
-  };
-
   // Helpers: clamp value
   const clamp = (val, min, max) => Math.max(min, Math.min(max, val));
 
   // compute pan limits and clamp offset
-  function clampOffset(nextOffset, usedZoom = zoom) {
+  const clampOffset = useCallback((nextOffset, usedZoom = zoom) => {
     const container = containerRef.current;
     const img = imgRef.current;
     if (!container || !img) return nextOffset;
@@ -588,7 +545,50 @@ function MyGallery({ images, resetGallery }) {
     // apply the clamped result to state (if called from outside setState)
     setOffset(clamped);
     return clamped;
-  }
+  }, [zoom]);
+
+  // Mouse drag (desktop)
+  const handleMouseDown = (e) => {
+    e.preventDefault();
+    if (!isZoomed) return;
+    isDragging.current = true;
+    startPos.current = { x: e.clientX, y: e.clientY };
+  };
+
+  const handleMouseMove = useCallback((e) => {
+    if (!isDragging.current || !isZoomed) return;
+    const dx = (e.clientX - startPos.current.x) * DRAG_SPEED;
+    const dy = (e.clientY - startPos.current.y) * DRAG_SPEED;
+    startPos.current = { x: e.clientX, y: e.clientY };
+    setOffset((prev) => {
+      const next = { x: prev.x + dx, y: prev.y + dy };
+      return clampOffset(next, zoom);
+    });
+  }, [isZoomed, zoom, clampOffset]);
+
+  const handleMouseUp = useCallback(() => {
+    isDragging.current = false;
+  }, []);
+
+  useEffect(() => {
+    // global listeners so mouseup outside image still stops dragging
+    window.addEventListener("mouseup", handleMouseUp);
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => {
+      window.removeEventListener("mouseup", handleMouseUp);
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, [handleMouseMove, handleMouseUp]);
+
+  // Wheel zoom desktop
+  const handleWheel = (e) => {
+    e.preventDefault();
+    const delta = e.deltaY < 0 ? 0.1 : -0.1;
+    const newZoom = Math.max(0.4, +(zoom + delta).toFixed(2));
+    setZoom(newZoom);
+    setIsZoomed(newZoom > 1);
+    clampOffset(offset, newZoom);
+  };
 
   // Touch handlers (mobile)
   const handleTouchStart = (e) => {

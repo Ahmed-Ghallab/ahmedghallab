@@ -4,18 +4,18 @@ import { useEffect, useState } from "react";
 import FloatingIcons from "./FloatingIcons";
 import { FaCode, FaRocket, FaBriefcase, FaGraduationCap } from "react-icons/fa";
 
+const toRotate = [
+  "Front-End Developer",
+  "React.js & Next.js Specialist",
+  "TypeScript & UI/UX Engineer",
+  "SaaS & E-Commerce Builder",
+];
+
 function MyHeader() {
   const [text, setText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
   const [typingSpeed, setTypingSpeed] = useState(120);
-
-  const toRotate = [
-    "Front-End Developer",
-    "React.js & Next.js Specialist",
-    "TypeScript & UI/UX Engineer",
-    "SaaS & E-Commerce Builder",
-  ];
 
   useEffect(() => {
     const handleType = () => {

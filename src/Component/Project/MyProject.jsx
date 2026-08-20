@@ -348,7 +348,7 @@ const tierFilters = [
   { id: "tier3", label: "Tier 3: Tools & API Apps (2)" },
 ];
 
-function ProjectImageGallery({ images, captions, name, badgeColor }) {
+function ProjectImageGallery({ images, captions, name }) {
   const [activeIdx, setActiveIdx] = useState(0);
 
   if (!images || images.length === 0) return null;
