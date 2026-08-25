@@ -81,6 +81,12 @@
     color: var(--text-highlight);
     font-family: var(--font-heading);
     letter-spacing: 0.3px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-dev-name:hover {
+    color: var(--primary);
 }
 
 .footer-dev-role {
@@ -99,6 +105,17 @@
     font-family: var(--font-code);
     color: var(--text-muted);
     margin: 0;
+}
+
+.footer-author-link {
+    color: var(--text-highlight);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.footer-author-link:hover {
+    color: var(--primary);
 }
 
 .footer-bottom-copy span {

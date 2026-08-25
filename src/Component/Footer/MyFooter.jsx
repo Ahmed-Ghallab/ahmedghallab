@@ -15,14 +15,32 @@ function MyFooter() {
             <img src={FootLogo} alt="Ahmed Ghallab Logo" className="footer-logo-img" loading="lazy" decoding="async" width="160" height="42" />
           </a>
           <div className="footer-brand-text">
-            <span className="footer-dev-name">Ahmed Mohamed Ghallab</span>
+            <a
+              href="https://ahmed-ghallab.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-dev-name"
+              title="View Portfolio"
+            >
+              Ahmed Mohamed Ghallab
+            </a>
             <span className="footer-dev-role">Front-End Developer</span>
           </div>
         </div>
 
         <div className="footer-bottom-copy">
           <p>
-            &copy; {new Date().getFullYear()} Ahmed Ghallab. Built with <span>React.js</span> & <span>Clean Architecture</span>.
+            &copy; {new Date().getFullYear()}{" "}
+            <a
+              href="https://ahmed-ghallab.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-author-link"
+              title="View Portfolio"
+            >
+              Ahmed Ghallab
+            </a>
+            . Built with <span>React.js</span> & <span>Clean Architecture</span>.
           </p>
         </div>
       </div>
